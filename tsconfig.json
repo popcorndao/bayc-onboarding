@@ -24,8 +24,18 @@
     "sourceMap": true,
     "target": "es5",
     "downlevelIteration": true,
-    "lib": ["dom", "es2017"],
-    "paths": {
-    }
-  }
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "paths": {}
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

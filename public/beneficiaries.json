@@ -1,0 +1,45 @@
+[
+  {
+    "name": "Panthera",
+    "image": { "image": "Panthera.jpeg", "description": "Panthera" },
+    "url": "https://www.panthera.org/",
+    "impactDesc": "Panthera is the only organization in the world that is devoted exclusively to the conservation of the world’s 40 wild cat species and their ecosystems. Representing the most comprehensive effort of its kind, Panthera partners with NGOs, scientific institutions, local communities, governments around the globe and citizens who want to help ensure a future for wild cats.",
+    "area": "Global",
+    "shortDesc": "Supporting the most endangered big cats (which Popcorn loves) from extinction."
+  },
+  {
+    "name": "Pathway to Education",
+    "image": { "image": "PathwayToEducation.jpg", "description": "PathwayToEducation" },
+    "url": "https://www.pathwaystoeducation.ca/",
+    "impactDesc": "Pathways to Education provides the resources and network of support to youth from low-income communities to graduate from high school and build the foundation for a successful future.  There are currently 27 Pathways Program locations across Canada helping thousands of students and breaking the cycle of poverty.",
+    "area": "Canada",
+    "shortDesc": "Being the first crypto-friendly charity in Canada to accept donations in cryptocurrency, leading the way for more adoption in the social impact space."
+  },
+  {
+    "name": "Rock Your Life",
+    "image": { "image": "RockYourLife.jpg", "description": "RockYourLife" },
+    "url": "https://rockyourlife.de/",
+    "impactDesc": "Founded by three students and run by volunteers, Rock Your Life is a mentorship program providing disadvantaged youth in Europe by pairing them with university student mentors and providing career workshops to promote fairness in education and the desire to develop undiscovered potential. The organization now has 52 locations in 5 countries and helped more than 8,500 students.",
+    "area": "Europe",
+    "shortDesc": "Highlighting youth education, inequality and the power of mentorship at the same time."
+  },
+  {
+    "name": "Rhino Ark Foundation",
+    "image": {
+      "image": "RhinoArkFoundation.jpeg",
+      "description": "RhinoArkFoundation"
+    },
+    "url": "https://rhinoark.org/",
+    "impactDesc": "For 25 years, Rhino Ark successfully ensured dramatic recoveries of Kenya’s mountain forest ecosystems by protecting endangered wildlife including the black rhino and forest-edge communities through its electric fencing project and income-generating sustainable programs.",
+    "area": "Kenyan Eburu Forest Ecosystem",
+    "shortDesc": "Supporting a range of community-based projects that illustrate that biodiversity is really about community power and human stewardship of nature"
+  },
+  {
+    "name": "UNICEF Crypto Fund",
+    "image": { "image": "Unicef.jpeg", "description": "Unicef" },
+    "url": "https://www.unicef.org/innovation/stories/unicef-cryptofund",
+    "impactDesc": "By sharing the public records of crypto transfers, the CryptoFund aspires to create visibility for the donor and the public, adding a layer of transparent accounting to the donation and investment processes. The CryptoFund is a prototype fund for UNICEF to explore the use of digital currencies in a digitally-financed future.",
+    "area": "Global",
+    "shortDesc": "Being a pioneer in philanthropy using blockchain and cryptocurrency to improve visibility and transparency of social impact funding"
+  }
+]

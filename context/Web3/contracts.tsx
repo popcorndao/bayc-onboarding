@@ -8,15 +8,18 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { setSingleActionModal } from '../actions';
 import { store } from '../store';
 import { connectors, networkMap } from './connectors';
+import { Contract } from "ethers"
+import baycAbi from "../../utils/baycAbi.json"
 
-export interface Contracts {}
 
-interface ContractsContext {
-  contracts: Contracts;
-  setContracts: React.Dispatch<Contracts>;
+
+
+interface ContractContext {
+  contract: Contract;
+  setContract: React.Dispatch<Contract>;
 }
 
-export const ContractsContext = createContext<ContractsContext>(null);
+export const ContractContext = createContext<ContractContext>(null);
 
 interface ContractsWrapperProps {
   children: React.ReactNode;
@@ -51,7 +54,7 @@ export default function ContractsWrapper({
     active,
     error,
   } = context;
-  const [contracts, setContracts] = useState<Contracts>();
+  const [contract, setContract] = useState<Contract>();
   const { dispatch } = useContext(store);
 
   useEffect(() => {
@@ -81,17 +84,21 @@ export default function ContractsWrapper({
     if (!library) {
       return;
     }
-    setContracts({});
+    setContract(new Contract(
+      "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      baycAbi,
+      library
+    ));
   }, [library, active]);
 
   return (
-    <ContractsContext.Provider
+    <ContractContext.Provider
       value={{
-        contracts,
-        setContracts,
+        contract,
+        setContract,
       }}
     >
       {children}
-    </ContractsContext.Provider>
+    </ContractContext.Provider>
   );
 }
