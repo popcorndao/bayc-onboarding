@@ -1,0 +1,33 @@
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build]
+  command = "yarn netlify-build"
+  publish = "packages/app/out"
+
+[[plugins]]
+  package = 'netlify-plugin-contextual-env'
+  [plugins.inputs]
+    mode = 'prefix'
+
+[context.deploy-preview]
+
+  [context.deploy-preview.environment]
+    # this is a random private key needed for hardhat compile to work
+    CHAIN_ID = "1"
+
+[context.production]
+
+  [context.production.environment]
+    # this is a random private key needed for hardhat compile to work
+    CHAIN_ID = "1"
+
+[context.rinkeby]
+  [context.rinkeby.environment]
+    # this is a random private key needed for hardhat compile to work
+    CHAIN_ID = "4"
+
+[context.develop]
+  [context.develop.environment]
+    # this is a random private key needed for hardhat compile to work
+    CHAIN_ID = "4"
