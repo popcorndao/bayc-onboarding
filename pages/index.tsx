@@ -1,13 +1,12 @@
-import { BigNumber } from "@ethersproject/bignumber";
 import { Web3Provider } from "@ethersproject/providers";
 import { useWeb3React } from "@web3-react/core";
 import Navbar from "components/NavBar";
 import { connectors } from "context/Web3/connectors";
 import { ContractContext } from "context/Web3/contracts";
-import { Contract } from "ethers";
 import router from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import checkApe from "utils/checkApe";
+import EVENT_END from "utils/eventEnd";
 
 export default function Index(): JSX.Element {
   const context = useWeb3React<Web3Provider>();
@@ -22,6 +21,8 @@ export default function Index(): JSX.Element {
     error,
   } = context;
   const { contract } = useContext(ContractContext);
+  const [countdown, setCountdown] = useState<number[]>([]);
+  const [countdownActive, disableCountdown] = useState<boolean>(true);
 
   useEffect(() => {
     if (!account || !contract) {
@@ -31,6 +32,26 @@ export default function Index(): JSX.Element {
       hasApe ? router.push("/beneficiaries") : router.push("/error")
     );
   }, [account]);
+
+  setInterval(function () {
+    const now = new Date().getTime();
+
+    const distance = EVENT_END.getTime() - now;
+    if (distance < 0) {
+      disableCountdown(false);
+      setCountdown([0, 0, 0, 0]);
+    }
+
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    setCountdown([days, hours, minutes, seconds]);
+  }, 1000);
 
   return (
     <div className="w-full h-screen bg-white overflow-hidden">
@@ -42,18 +63,47 @@ export default function Index(): JSX.Element {
             This airdrop sends 100 $POP to your wallet and 100 $POP to the
             charities you select. Your airdropped tokens are locked until $POP
             staking 2022). Simply verify BAYC charity allocations, and await
-            your airdrop. In meantime, join us in Discord and follow us
-            @Popcorn_DAO.
+            your airdrop. In meantime, join us in{" "}
+            <a
+              className="font-normal cursor-pointer"
+              href="https://discord.gg/RN4VGqPDwX"
+              target="_blank"
+            >
+              Discord
+            </a>{" "}
+            and follow us on{" "}
+            <a
+              className="font-normal cursor-pointer"
+              href="https://twitter.com/popcorn_DAO"
+              target="_blank"
+            >
+              Twitter
+            </a>
           </p>
           <button
-            className="w-48 2xl:w-60 2xl:mt-16 py-4 px-5 mt-8 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-600 hover:bg-blue-700"
+            className="w-48 2xl:w-60 py-4 px-5 mt-8 2xl:mt-16 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-600 hover:bg-blue-700"
             onClick={() => activate(connectors.Injected)}
           >
-            <p className="text-lg text-white font-semibold 2xl:text-2xl">Connect Wallet</p>
+            <p className="text-lg text-white font-semibold 2xl:text-2xl">
+              Connect Wallet
+            </p>
           </button>
+          <div className="w-full">
+            <div className="w-64 border-2 border-gray-900 rounded-xl mt-12 mx-auto px-6 py-4">
+              <p className="text-3xl text-center font-medium">
+                {countdown[0] > 0 ? countdown[0] : "00"}:
+                {countdown[1] > 0 ? countdown[1] : "00"}:
+                {countdown[2] > 0 ? countdown[2] : "00"}:
+                {countdown[3] > 0 ? countdown[3] : "00"} left
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <img src="/images/landingBG.svg" className="absolute bottom-0 z-0 w-full" />
+      <img
+        src="/images/landingBG.svg"
+        className="absolute bottom-0 z-0 w-full"
+      />
     </div>
   );
 }

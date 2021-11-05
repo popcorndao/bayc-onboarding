@@ -6,6 +6,9 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      "2xl": "2560px",
+    },
     extend: {
       spacing: {
         18: "4.5rem",

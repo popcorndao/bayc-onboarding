@@ -11,6 +11,7 @@ import { ContractContext } from "context/Web3/contracts";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import checkApe from "utils/checkApe";
+import EVENT_END from "utils/eventEnd";
 import beneficiaries from "../public/beneficiaries.json";
 
 const MAX_VOTES = 200;
@@ -131,7 +132,7 @@ const IndexPage = () => {
             </p>
           </button>
           <p className="mt-8 text-xl text-center">Available Rewards</p>
-          <div className="bg-white border border-gray-900 rounded-md mt-2 px-20 py-4">
+          <div className="bg-white border border-gray-900 rounded-xl mt-2 px-20 py-4">
             <h1 className="text-5xl text-center font-medium">
               {availableVotes} POP
             </h1>
@@ -155,7 +156,7 @@ const IndexPage = () => {
             <button
               className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={() => addApe(account, votes)}
-              disabled={!hasApe || availableVotes > 0 || !account}
+              disabled={!hasApe || availableVotes > 0 || !account || new Date() < EVENT_END}
             >
               <p className="text-xl text-white font-semibold">Submit</p>
             </button>

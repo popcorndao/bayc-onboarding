@@ -30,15 +30,15 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
 }) => {
   return (
     <div className="w-full relative z-20">
-      <div className="flex flex-row w-full">
+      <div className="flex flex-row justify-between w-full">
         <div className="w-1/3 mr-4">
           <img
-            className="h-104 object-cover rounded-xl"
+            className="h-104 object-cover rounded-3xl"
             src={`/images/${beneficiary.image.image}`}
             alt={beneficiary.image.description}
           />
           <div className="flex flex-row justify-end w-full mt-8">
-            <div className="flex flex-row items-center justify-between w-3/4 2xl:w-2/3">
+            <div className="flex flex-row items-center justify-between w-3/4 2xl:w-3/4">
               <button
                 className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center hover:bg-red-600"
                 onClick={() =>

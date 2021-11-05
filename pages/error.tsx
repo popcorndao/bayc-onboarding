@@ -30,13 +30,15 @@ const ErrorPage = () => {
             <a
               className="font-normal text-2xl cursor-pointer z-20 mt-8 mx-2"
               href="https://discord.gg/RN4VGqPDwX"
+              target="_blank"
             >
               Discord
             </a>{" "}
             <p className="mt-8 text-2xl font-light">and</p>
             <a
               className="font-normal text-2xl cursor-pointer z-20 mt-8 mx-2"
-              href="https://discord.gg/RN4VGqPDwX"
+              href="https://twitter.com/popcorn_DAO"
+              target="_blank"
             >
               Twitter
             </a>{" "}
