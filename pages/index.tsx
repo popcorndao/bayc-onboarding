@@ -1,157 +1,59 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { Web3Provider } from "@ethersproject/providers";
-import { createClient } from "@supabase/supabase-js";
 import { useWeb3React } from "@web3-react/core";
-import BeneficiaryCard from "components/BeneficiaryCard";
-import { DefaultSingleActionModalProps } from "components/Modal/SingleActionModal";
 import Navbar from "components/NavBar";
-import { setSingleActionModal } from "context/actions";
-import { store } from "context/store";
 import { connectors } from "context/Web3/connectors";
 import { ContractContext } from "context/Web3/contracts";
 import { Contract } from "ethers";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import beneficiaries from "../public/beneficiaries.json";
+import router from "next/router";
+import { useContext, useEffect } from "react";
+import checkApe from "utils/checkApe";
 
-async function checkApe(contract: Contract, account: string): Promise<boolean> {
-  const apeBalance = await contract.balanceOf(account);
-  return apeBalance.gt(BigNumber.from("0"));
-}
-
-const MAX_VOTES = 300;
-
-const IndexPage = () => {
-  const router = useRouter();
+export default function Index(): JSX.Element {
   const context = useWeb3React<Web3Provider>();
+  const {
+    connector,
+    library,
+    chainId,
+    account,
+    activate,
+    deactivate,
+    active,
+    error,
+  } = context;
   const { contract } = useContext(ContractContext);
-  const { library, account, activate, active } = context;
-  const { dispatch } = useContext(store);
-  const [hasApe, setHasApe] = useState<boolean>(false);
-  const [availableVotes, setAvailableVotes] = useState<number>(MAX_VOTES);
-  const [votes, setVotes] = useState<number[]>([0, 0, 0, 0, 0]);
-  const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-  );
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.pathname !== "/") {
-      router.replace(window.location.pathname);
-    }
-  }, [router.pathname]);
 
   useEffect(() => {
     if (!account || !contract) {
       return;
     }
-    checkApe(contract, account).then((res) => {
-      setHasApe(res);
-      dispatch(
-        setSingleActionModal({
-          content: `You can only participate if you have a Bored Ape...`,
-          title: "Error",
-          visible: true,
-          type: "error",
-          onConfirm: {
-            label: "Ok",
-            onClick: () =>
-              dispatch(
-                setSingleActionModal({ ...DefaultSingleActionModalProps })
-              ),
-          },
-        })
-      );
-    });
+    checkApe(contract, account).then((hasApe) =>
+      hasApe ? router.push("/beneficiaries") : router.push("/error")
+    );
   }, [account]);
 
-  function updateVotes(vote: number, i: number): void {
-    const newVotes = votes;
-    newVotes[i] = 0;
-    const oldTotal = newVotes.reduce(function (acc, val) {
-      return acc + val;
-    }, 0);
-    if (oldTotal + vote > MAX_VOTES) {
-      setAvailableVotes((prevState) => 0);
-      const remaining = MAX_VOTES - oldTotal;
-      newVotes[i] = remaining;
-      setVotes((prevState) => newVotes);
-    } else {
-      newVotes[i] = vote;
-      setAvailableVotes((prevState) => MAX_VOTES - (oldTotal + vote));
-      setVotes((prevState) => newVotes);
-    }
-  }
-
-  async function addApe(address: string, votes: number[]) {
-    const message = library
-      .getSigner()
-      .signMessage("By signing this message, I verify I own this address");
-    if (message) {
-      try {
-        await supabase.from("Apes").insert([
-          {
-            address: address,
-            beneficiary0: votes[0],
-            beneficiary1: votes[1],
-            beneficiary2: votes[2],
-            beneficiary3: votes[3],
-            beneficiary4: votes[4],
-          },
-        ]);
-      } catch (error) {
-        console.log("error", error);
-      }
-    } else {
-      dispatch(
-        setSingleActionModal({
-          content: `You have to sign the message to verify ownership of the address`,
-          title: "Error",
-          visible: true,
-          type: "error",
-          onConfirm: {
-            label: "Ok",
-            onClick: () =>
-              dispatch(
-                setSingleActionModal({ ...DefaultSingleActionModalProps })
-              ),
-          },
-        })
-      );
-    }
-  }
-
   return (
-    <div className="w-full h-screen bg-white">
+    <div className="w-full h-screen bg-white overflow-hidden">
       <Navbar />
-      <div className="w-9/12 mx-auto mt-12 h-full">
-        <h2 className="text-2xl font-semibold">
-          Distribute POP to Beneficiaries
-        </h2>
-        <p className="text-lg">{availableVotes} POP left</p>
-        <div className="flex flex-wrap items-center">
-          {beneficiaries.map((beneficiary, i) => (
-            <BeneficiaryCard
-              beneficiary={beneficiary}
-              setVotes={updateVotes}
-              maxVotes={MAX_VOTES}
-              assignedVotes={votes[i]}
-              index={i}
-            />
-          ))}
-        </div>
-        <div className="mt-24 pb-48">
-        <button
-          onClick={() => account ? addApe(account, votes) : activate(connectors.Injected)}
-          disabled={account ? !hasApe : false}
-          className="button button-primary mx-auto w-80"
-        >
-          {account ? "Submit" : "Connect Wallet"}
-        </button>
+      <div className="z-10 relative flex justify-center mt-16">
+        <div className="flex flex-col w-1/3 mt-8">
+          <img src="/images/hero.png" alt="hero" className="" />
+          <p className="text-xl mt-8 text-gray-900 font-light text-center">
+            This airdrop sends 100 $POP to your wallet and 100 $POP to the
+            charities you select. Your airdropped tokens are locked until $POP
+            staking 2022). Simply verify BAYC charity allocations, and await
+            your airdrop. In meantime, join us in Discord and follow us
+            @Popcorn_DAO.
+          </p>
+          <button
+            className="w-48 py-4 px-5 mt-8 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-600 hover:bg-blue-700"
+            onClick={() => activate(connectors.Injected)}
+          >
+            <p className="text-lg text-white font-semibold">Connect Wallet</p>
+          </button>
         </div>
       </div>
+      <img src="/images/landingBG.svg" className="absolute bottom-0 z-0" />
     </div>
   );
-};
-
-export default IndexPage;
+}

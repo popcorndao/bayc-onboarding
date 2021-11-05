@@ -3,19 +3,19 @@ import VoteSlider from "./VoteSlider";
 
 export interface Beneficiary {
   image: BeneficiaryImage;
-  url:string;
+  url: string;
   name: string;
   impactDesc: string;
-  area:string;
-  shortDesc:string;
+  area: string;
+  shortDesc: string;
 }
 
-interface BeneficiaryCardProps{
-  beneficiary:Beneficiary;
-  setVotes:Function;
-  maxVotes:number;
-  assignedVotes:number;
-  index:number;
+interface BeneficiaryCardProps {
+  beneficiary: Beneficiary;
+  setVotes: Function;
+  maxVotes: number;
+  assignedVotes: number;
+  beneficiaryIndex: number;
 }
 
 const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
@@ -23,49 +23,52 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
   setVotes,
   maxVotes,
   assignedVotes,
-  index
+  beneficiaryIndex,
 }) => {
   return (
-    <div className="w-104 rounded-xl shadow-xl mr-4 mt-8 pb-8" key={beneficiary.name}>
+    <div
+      className="w-11/12 rounded-xl shadow-md border border-gray-100 mt-8 pb-8 relative z-20 bg-white"
+    >
       <div className="flex-shrink-0">
-        <img
-          className="h-48 w-full object-cover rounded-t-xl"
-          src={`/images/${beneficiary.image.image}`}
-          alt={beneficiary.image.description}
-        />
-        <div className="px-8 pb-12 mt-4 h-128">
-          <a
-            className="text-2xl font-bold cursor-pointer"
-            href={beneficiary.url}
-            target="_blank"
-          >
-            {beneficiary.name}
-          </a>
-          <div className="mt-4">
-            <p className="font-medium">Impact Area</p>
-            <p className="text-base">{beneficiary.area}</p>
+        <div className="px-10 pb-12 mt-8">
+          <div className="flex flex-row items-center justify-between h-40">
+            <a
+              className="text-6xl cursor-pointer"
+              href={beneficiary.url}
+              target="_blank"
+            >
+              {beneficiary.name}
+            </a>
+            <p className="text-2xl">0{beneficiaryIndex + 1}/05</p>
           </div>
-          <div className="mt-4">
-            <p className="font-medium">Impact Description</p>
-            <p className="text-base">
+          <div className="space-y-8 mt-4 h-96">
+            <p className="text-xl font-light tracking-wide">
+              <span className="text-xl font-medium mr-1">Impact Area:</span>
+              {beneficiary.area}
+            </p>
+            <p className="text-xl font-light tracking-wide">
+              <span className="text-xl font-medium mr-1">Mission:</span>
               {beneficiary.impactDesc}
             </p>
-          </div>
-          <div className="mt-4">
-            <p className="font-medium">Why they pop</p>
-            <p className="text-base">
+            <p className="text-xl font-light tracking-wide">
+              <span className="text-xl font-medium mr-1">Why they pop:</span>
               {beneficiary.shortDesc}
+              <a
+                className="text-blue-900 cursor-pointer ml-2"
+                href={beneficiary.url}
+                target="_blank"
+              >
+                link
+              </a>
             </p>
           </div>
-          <a
-            className="text-blue-900 cursor-pointer mt-2"
-            href={beneficiary.url}
-            target="_blank"
-          >
-            Link
-          </a>
-          <div>
-            <VoteSlider setVotes={setVotes} maxVotes={maxVotes} assignedVotes={assignedVotes} index={index}/>
+          <div className="mt-12">
+            <VoteSlider
+              setVotes={setVotes}
+              maxVotes={maxVotes}
+              assignedVotes={assignedVotes}
+              beneficiaryIndex={beneficiaryIndex}
+            />
           </div>
         </div>
       </div>

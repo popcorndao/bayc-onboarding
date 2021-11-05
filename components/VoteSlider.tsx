@@ -1,21 +1,19 @@
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import { useState } from "react";
 
 export interface VoteSliderProps {
   setVotes: Function;
   maxVotes: number;
   assignedVotes: number;
-  index: number;
+  beneficiaryIndex: number;
 }
 
 const VoteSlider: React.FC<VoteSliderProps> = ({
   setVotes,
   maxVotes,
   assignedVotes,
-  index,
+  beneficiaryIndex,
 }) => {
-
   const sliderSteps = [
     [0, "0%"],
     [maxVotes * 0.25, "25%"],
@@ -26,43 +24,44 @@ const VoteSlider: React.FC<VoteSliderProps> = ({
   const sliderMarks = {};
   sliderSteps.forEach(function (step) {
     sliderMarks[step[0]] = {
-      style: { color: "rgba(67, 56, 202)" },
+      style: { color: "#FA6456"},
       label: step[1],
     };
   });
 
   return (
     <>
-      <span className="flex flex-row items-center justify-between mt-8">
-        <p className="text-sm font-medium">POP Contribution</p>
-        <p className="text-sm font-medium">{assignedVotes}</p>
+      <span className="w-full flex flex-row items-center justify-between mb-6">
+        <p className="text-xl font-medium">Allocate your token</p>
+        <p className="text-xl font-medium">{assignedVotes}</p>
       </span>
-      <div className="w-full ml-1 pb-3">
+      <div className="w-full pb-3 px-2">
         <Slider
-          className="mt-2 flex-grow-0 flex-shrink-0"
+          className=""
           value={assignedVotes}
-          onChange={(value) => setVotes(value, index)}
+          onChange={(value) => setVotes(value, beneficiaryIndex)}
           min={0}
           max={maxVotes}
           step={10}
           marks={sliderMarks}
-          handleStyle={{ borderColor: "rgba(67, 56, 202)" }}
+          handleStyle={{ borderColor: "#FA6456", width:"20px", height:"20px"}}
           dotStyle={{
-            backgroundColor: "rgba(67, 56, 202)",
-            border: "rgba(67, 56, 202)",
+            width:"20px",
+            height:"20px",
+            backgroundColor: "#EFD1CE",
+            border: "3px solid #FFFFFF",
+            marginBottom:"-8px",
+            marginLeft:"-12px"
           }}
           activeDotStyle={{
-            backgroundColor: "rgba(67, 56, 202)",
-            border: "rgba(67, 56, 202)",
+            width:"20px",
+            height:"20px",
+            backgroundColor: "#FA6456",
+            border: "3px solid #FFFFFF",
+            marginBottom:"-9px"
           }}
-          railStyle={{ backgroundColor: "rgba(67, 56, 202)", height: "4px" }}
-          trackStyle={{ backgroundColor: "rgba(67, 56, 202)", height: "4px" }}
-          /* handleStyle={{
-              border: '#F29F05',
-              backgroundColor: '#fff',
-              height: '14px',
-              width: '14px',
-            }} */
+          railStyle={{ backgroundColor: "#EFD1CE", height: "4px", marginTop:"3px" }}
+          trackStyle={{ backgroundColor: "#FA6456", height: "4px", marginTop:"3px" }}
         />
       </div>
     </>
