@@ -38,7 +38,7 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
             alt={beneficiary.image.description}
           />
           <div className="flex flex-row justify-end w-full mt-8">
-            <div className="flex flex-row items-center justify-between w-3/4">
+            <div className="flex flex-row items-center justify-between w-3/4 2xl:w-2/3">
               <button
                 className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center hover:bg-red-600"
                 onClick={() =>

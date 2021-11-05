@@ -20,7 +20,7 @@ const ErrorPage = () => {
   return (
     <div className="w-full h-screen bg-primaryLight overflow-hidden">
       <Navbar />
-      <div className="w-full text-center mt-14 z-20">
+      <div className="w-full text-center mt-14 z-20 2xl:mt-40">
         <h1 className="text-5xl font-medium w-1/2 text-center mx-auto">
           Sorry, you need a Bored Ape for this airdrop...
         </h1>
@@ -47,7 +47,7 @@ const ErrorPage = () => {
       <img
         src="/images/errorBackground.svg"
         alt="bgError"
-        className="absolute bottom-0 -z-10"
+        className="absolute bottom-0 -z-10 w-full"
       />
     </div>
   );

@@ -116,9 +116,9 @@ const IndexPage = () => {
       <img
         src="/images/heroBG.svg"
         alt="heroBG"
-        className="absolute top-0 z-0"
+        className="absolute top-0 z-0 w-full"
       />
-      <div className="z-10 relative flex justify-center">
+      <div className="z-10 relative flex justify-center 2xl:mt-24">
         <div className="flex flex-col mt-16">
           <button
             className="w-56 py-4 px-5 mt-8 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-100 border-2 border-blue-600 hover:bg-blue-400"
@@ -151,7 +151,7 @@ const IndexPage = () => {
             beneficiaryIndex={beneficiaryIndex}
             setBeneficiaryIndex={setBeneficiaryIndex}
           />
-          <div className="mt-36 pl-4 ml-80 pb-24 relative z-20">
+          <div className="mt-36 2xl:mt-40 pl-4 ml-80 pb-24 relative z-20">
             <button
               className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={() => addApe(account, votes)}
@@ -161,7 +161,7 @@ const IndexPage = () => {
             </button>
           </div>
         </div>
-        <img src="/images/beneficiaryBG.svg" className="absolute top-20 left-10 z-0 w-11/12" />
+        <img src="/images/beneficiaryBG.svg" className="absolute top-20 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28" />
       </div>
     </div>
   );
