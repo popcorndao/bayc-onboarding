@@ -24,7 +24,7 @@ const VoteSlider: React.FC<VoteSliderProps> = ({
   const sliderMarks = {};
   sliderSteps.forEach(function (step) {
     sliderMarks[step[0]] = {
-      style: { color: "#FA6456"},
+      style: { color: "#FA6456", marginTop:"2px"},
       label: step[1],
     };
   });

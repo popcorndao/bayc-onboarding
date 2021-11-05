@@ -1,13 +1,5 @@
 [
   {
-    "name": "Panthera",
-    "image": { "image": "Panthera.jpeg", "description": "Panthera" },
-    "url": "https://www.panthera.org/",
-    "impactDesc": "Panthera is the only organization in the world that is devoted exclusively to the conservation of the world’s 40 wild cat species and their ecosystems. Representing the most comprehensive effort of its kind, Panthera partners with NGOs, scientific institutions, local communities, governments around the globe and citizens who want to help ensure a future for wild cats.",
-    "area": "Global",
-    "shortDesc": "Supporting the most endangered big cats (which Popcorn loves) from extinction."
-  },
-  {
     "name": "Pathway to Education",
     "image": { "image": "PathwayToEducation.jpg", "description": "PathwayToEducation" },
     "url": "https://www.pathwaystoeducation.ca/",
@@ -22,6 +14,14 @@
     "impactDesc": "Founded by three students and run by volunteers, Rock Your Life is a mentorship program providing disadvantaged youth in Europe by pairing them with university student mentors and providing career workshops to promote fairness in education and the desire to develop undiscovered potential. The organization now has 52 locations in 5 countries and helped more than 8,500 students.",
     "area": "Europe",
     "shortDesc": "Highlighting youth education, inequality and the power of mentorship at the same time."
+  },
+  {
+    "name": "Panthera",
+    "image": { "image": "Panthera.jpeg", "description": "Panthera" },
+    "url": "https://www.panthera.org/",
+    "impactDesc": "Panthera is the only organization in the world that is devoted exclusively to the conservation of the world’s 40 wild cat species and their ecosystems. Representing the most comprehensive effort of its kind, Panthera partners with NGOs, scientific institutions, local communities, governments around the globe and citizens who want to help ensure a future for wild cats.",
+    "area": "Global",
+    "shortDesc": "Supporting the most endangered big cats (which Popcorn loves) from extinction."
   },
   {
     "name": "Rhino Ark Foundation",

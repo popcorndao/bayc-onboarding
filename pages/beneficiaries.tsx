@@ -13,7 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import checkApe from "utils/checkApe";
 import beneficiaries from "../public/beneficiaries.json";
 
-const MAX_VOTES = 300;
+const MAX_VOTES = 200;
 
 const IndexPage = () => {
   const router = useRouter();
@@ -153,9 +153,9 @@ const IndexPage = () => {
           />
           <div className="mt-36 pl-4 ml-80 pb-24 relative z-20">
             <button
-              className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:opacity-75"
+              className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={() => addApe(account, votes)}
-              disabled={hasApe || availableVotes > 0 || !account}
+              disabled={!hasApe || availableVotes > 0 || !account}
             >
               <p className="text-xl text-white font-semibold">Submit</p>
             </button>
