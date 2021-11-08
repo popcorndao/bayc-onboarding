@@ -88,14 +88,32 @@ export default function Index(): JSX.Element {
               Connect Wallet
             </p>
           </button>
-          <div className="w-full">
-            <div className="w-64 border-2 border-gray-900 rounded-xl mt-12 mx-auto px-6 py-4">
-              <p className="text-3xl text-center font-medium">
-                {countdown[0] > 0 ? countdown[0] : "00"}:
-                {countdown[1] > 0 ? countdown[1] : "00"}:
-                {countdown[2] > 0 ? countdown[2] : "00"}:
-                {countdown[3] > 0 ? countdown[3] : "00"} left
-              </p>
+          <div className="w-9/12 mx-auto z-20 mt-12">
+            <div className="flex flex-row justify-evenly">
+              <div className="text-center">
+                <h1 className="font-medium text-5xl leading-snug">
+                  {countdown[0]}
+                </h1>
+                <p className="text-2xl font-landing not-italic text-gray-800">Days</p>
+              </div>
+              <div className="text-center">
+                <h1 className="font-medium text-5xl leading-snug">
+                  {countdown[1]}
+                </h1>
+                <p className="text-2xl font-landing not-italic text-gray-800">Hours</p>
+              </div>
+              <div className="text-center">
+                <h1 className="font-medium text-5xl leading-snug">
+                  {countdown[2]}
+                </h1>
+                <p className="text-2xl font-landing not-italic text-gray-800">Minutes</p>
+              </div>
+              <div className="text-center">
+                <h1 className="font-medium text-5xl leading-snug">
+                  {countdown[3]}
+                </h1>
+                <p className="text-2xl font-landing not-italic text-gray-800">Seconds</p>
+              </div>
             </div>
           </div>
         </div>
