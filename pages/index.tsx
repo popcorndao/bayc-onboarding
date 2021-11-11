@@ -10,7 +10,7 @@ import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
 import checkApe from "utils/checkApe";
-
+import winningApes from "../public/winningApes.json";
 enum Step {
   Wallet,
   Email,
@@ -68,7 +68,7 @@ export default function Index(): JSX.Element {
     active,
     error,
   } = context;
-  const { contract } = useContext(ContractContext);
+  const { contracts } = useContext(ContractContext);
   const { dispatch } = useContext(store);
   const [availableSlots, setAvailableSlots] = useState<number>(MAX_SLOTS);
   const [registeredContacts, setRegisteredContacts] =
@@ -94,19 +94,23 @@ export default function Index(): JSX.Element {
   }, [supabase]);
 
   useEffect(() => {
-    if (!account || !contract) {
+    if (!account || !contracts) {
       return;
     }
     if (PHASE === Phase.SignUp) {
       if (registeredContacts.addresses.includes(account)) {
         router.push("/alreadyRegistered");
       } else {
+        checkApe(contracts.bayc, account).then(
+          (hasApe) => !hasApe && router.push("/noApe")
+        );
         setEthAddress(account);
       }
+    } else {
+      winningApes.includes(account)
+        ? router.push("/beneficiaries")
+        : router.push("/notFastEnough");
     }
-    // checkApe(contract, account).then((hasApe) =>
-    //   hasApe ? router.push("/beneficiaries") : router.push("/error")
-    // );
   }, [account]);
 
   async function addApe(): Promise<void> {
@@ -150,7 +154,11 @@ export default function Index(): JSX.Element {
       <Navbar />
       <div className="z-10 relative flex justify-center mt-8 xl:mt-16 2xl:mt-24">
         <div className="flex flex-col w-1/3 mt-4">
-          <img src="/images/hero.png" alt="hero" className="w-9/12 xl:w-full mx-auto" />
+          <img
+            src="/images/hero.png"
+            alt="hero"
+            className="w-9/12 xl:w-full mx-auto"
+          />
           <p className="text-lg xl:text-xl 2xl:text-3xl mt-8 2xl:mt-12 text-gray-900 font-light text-center">
             This airdrop sends 100 $POP to your wallet and 100 $POP to the
             charities you select. Your airdropped tokens are locked until $POP
@@ -188,7 +196,9 @@ export default function Index(): JSX.Element {
                     </div>
                   ) : (
                     <div>
-                      <p className="text-2xl 2xl:text-4xl text-center mt-8">Oops...</p>
+                      <p className="text-2xl 2xl:text-4xl text-center mt-8">
+                        Oops...
+                      </p>
                       <p className="text-xl 2xl:text-3xl text-gray-900 font-light text-center">
                         There was an error... Please try again.
                       </p>
@@ -199,7 +209,9 @@ export default function Index(): JSX.Element {
                 <>
                   <div className="flex flex-row items-center mx-auto mt-6 xl:mt-10 2xl:mt-14">
                     <div className="rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 border-gray-800 flex justify-center items-center">
-                      <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold">1</p>
+                      <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold">
+                        1
+                      </p>
                     </div>
                     <img
                       src={`/images/${
@@ -297,7 +309,9 @@ export default function Index(): JSX.Element {
                   )}
                   <div
                     className={`w-48 xl:w-64 2xl:w-72 mx-auto border-2 border-gray-800 rounded-lg z-20 py-3 2xl:py-4 ${
-                      emailError ? "mt-0 xl:mt-4 2xl:mt-16" : "mt-8 xl:mt-12 2xl:mt-24"
+                      emailError
+                        ? "mt-0 xl:mt-4 2xl:mt-16"
+                        : "mt-8 xl:mt-12 2xl:mt-24"
                     }`}
                   >
                     <p className="text-xl xl:text-3xl 2xl:text-4xl font-semibold text-center">

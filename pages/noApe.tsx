@@ -16,7 +16,7 @@ const ErrorPage = () => {
       <Navbar />
       <div className="w-full text-center z-20 mt-8 xl:mt-14 2xl:mt-24">
         <h1 className="text-5xl 2xl:text-7xl font-medium w-1/2 2xl:w-5/12 text-center mx-auto">
-          Sorry, we encountered an error...
+          Sorry, you need a Bored Ape for this airdrop...
         </h1>
         <div className="z-20 mx-auto w-1/2 justify-center flex">
           <div className="flex flex-row">

@@ -1,20 +1,28 @@
 import { Web3Provider } from "@ethersproject/providers";
+import { parseEther } from "@ethersproject/units";
 import { createClient } from "@supabase/supabase-js";
 import { useWeb3React } from "@web3-react/core";
 import Beneficiary from "components/Beneficiary";
-import { DefaultSingleActionModalProps } from "components/Modal/SingleActionModal";
 import Navbar from "components/NavBar";
-import { setSingleActionModal } from "context/actions";
 import { store } from "context/store";
-import { connectors } from "context/Web3/connectors";
+import { connectors, networkMap } from "context/Web3/connectors";
 import { ContractContext } from "context/Web3/contracts";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import checkApe from "utils/checkApe";
-import EVENT_END from "utils/eventEnd";
+import toast, { Toaster } from "react-hot-toast";
+import checkEligibilityAndRoute from "utils/checkEligibilityAndRoute";
+import generateProof from "utils/generateProof";
+import getRequiredAddresses from "utils/getRequiredAddresses";
+import airdrop from "../public/airdrop.json";
 import beneficiaries from "../public/beneficiaries.json";
 
+enum Phase {
+  SignUp,
+  Claim,
+}
+
 const MAX_VOTES = 200;
+const PHASE = Phase.SignUp;
 
 const IndexPage = () => {
   const router = useRouter();
@@ -29,7 +37,7 @@ const IndexPage = () => {
     active,
     error,
   } = context;
-  const { contract } = useContext(ContractContext);
+  const { contracts } = useContext(ContractContext);
   const { dispatch } = useContext(store);
   const [hasApe, setHasApe] = useState<boolean>(false);
   const [availableVotes, setAvailableVotes] = useState<number>(MAX_VOTES);
@@ -47,12 +55,19 @@ const IndexPage = () => {
   }, [router.pathname]);
 
   useEffect(() => {
-    if (!account || !contract) {
+    if (!account || !contracts) {
       return;
     }
-    checkApe(contract, account).then((hasApe) => {
-      hasApe ? setHasApe(true) : router.push("/error");
-    });
+    if (PHASE === Phase.SignUp) {
+      router.push("/error");
+    } else {
+      checkEligibilityAndRoute(
+        contracts.merkleOrchard,
+        router,
+        airdrop,
+        account
+      );
+    }
   }, [account]);
 
   function updateVotes(vote: number, i: number): void {
@@ -73,46 +88,67 @@ const IndexPage = () => {
     }
   }
 
-  async function addApe(address: string, votes: number[]) {
-    const message = library
-      .getSigner()
-      .signMessage("By signing this message, I verify I own this address");
-    if (message) {
-      try {
-        await supabase.from("Apes").insert([
-          {
-            address: address,
-            beneficiary0: votes[0],
-            beneficiary1: votes[1],
-            beneficiary2: votes[2],
-            beneficiary3: votes[3],
-            beneficiary4: votes[4],
-          },
-        ]);
-      } catch (error) {
-        console.log("error", error);
-      }
-    } else {
-      dispatch(
-        setSingleActionModal({
-          content: `You have to sign the message to verify ownership of the address`,
-          title: "Error",
-          visible: true,
-          type: "error",
-          onConfirm: {
-            label: "Ok",
-            onClick: () =>
-              dispatch(
-                setSingleActionModal({ ...DefaultSingleActionModalProps })
-              ),
-          },
-        })
-      );
+  async function addVotes(address: string, votes: number[]): Promise<boolean> {
+    try {
+      await supabase.from("BeneficiaryVotes").insert([
+        {
+          beneficiary0: votes[0],
+          beneficiary1: votes[1],
+          beneficiary2: votes[2],
+          beneficiary3: votes[3],
+          beneficiary4: votes[4],
+          ape: account,
+        },
+      ]);
+      return true;
+    } catch (error) {
+      console.log("error", error);
+      return false;
     }
+  }
+
+  async function claimAirdrop(): Promise<void> {
+    toast.loading("Claiming airdrop...");
+    const requiredAddresses = getRequiredAddresses(
+      networkMap[process.env.CHAIN_ID]
+    );
+    const proof = generateProof(airdrop, account);
+    await contracts.merkleOrchard
+      .connect(library.getSigner())
+      .claimDistributions(
+        account,
+        [
+          {
+            distributionId: 0,
+            balance: parseEther(airdrop[account]),
+            distributor: requiredAddresses.distributor,
+            tokenIndex: 0,
+            merkleProof: proof,
+          },
+        ],
+        [requiredAddresses.pop]
+      )
+      .then((res) =>
+        res.wait().then((res) => {
+          toast.dismiss();
+          toast.success("Claimed Airdrop!");
+        })
+      )
+      .catch((err) => {
+        if (
+          err.message ===
+          "MetaMask Tx Signature: User denied transaction signature."
+        ) {
+          toast.error("Transaction was canceled");
+        } else {
+          toast.error(err.message.split("'")[1]);
+        }
+      });
   }
 
   return (
     <div className="w-full h-screen bg-white">
+      <Toaster position="top-right" />
       <Navbar />
       <img
         src="/images/heroBG.svg"
@@ -131,7 +167,9 @@ const IndexPage = () => {
               {account ? "Disconnect Wallet" : "Connect Wallet"}
             </p>
           </button>
-          <p className="text-xl 2xl:text-3xl text-center mt-8 2xl:mt-20">Available Rewards</p>
+          <p className="text-xl 2xl:text-3xl text-center mt-8 2xl:mt-20">
+            Available Rewards
+          </p>
           <div className="bg-white border border-gray-900 rounded-xl mt-2 px-20 py-4">
             <h1 className="text-5xl text-center font-medium">
               {availableVotes} POP
@@ -155,14 +193,21 @@ const IndexPage = () => {
           <div className="mt-36 2xl:mt-40 pl-4 ml-80 pb-24 relative z-20">
             <button
               className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
-              onClick={() => addApe(account, votes)}
-              disabled={!hasApe || availableVotes > 0 || !account || new Date() < EVENT_END}
+              onClick={() => {
+                addVotes(account, votes).then((res) => {
+                  res ? claimAirdrop() : router.push("/error");
+                });
+              }}
+              disabled={!hasApe || availableVotes > 0 || !account}
             >
               <p className="text-xl text-white font-semibold">Submit</p>
             </button>
           </div>
         </div>
-        <img src="/images/beneficiaryBG.svg" className="absolute top-20 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28" />
+        <img
+          src="/images/beneficiaryBG.svg"
+          className="absolute top-20 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28"
+        />
       </div>
     </div>
   );
