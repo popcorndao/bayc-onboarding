@@ -7,7 +7,20 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
-      "2xl": "2560px",
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1380px',
+      // => @media (min-width: 1380px) { ... }
+
+      'xl': '1840px',
+      // => @media (min-width: 1840px) { ... }
+
+      '2xl': '2560px',
+      // => @media (min-width: 1536px) { ... }
     },
     extend: {
       spacing: {

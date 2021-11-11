@@ -119,10 +119,10 @@ const IndexPage = () => {
         alt="heroBG"
         className="absolute top-0 z-0 w-full"
       />
-      <div className="z-10 relative flex justify-center 2xl:mt-24">
-        <div className="flex flex-col mt-16">
+      <div className="z-10 relative flex justify-center xl:mt-8 2xl:mt-16">
+        <div className="flex flex-col lg:mt-8 xl:mt-16">
           <button
-            className="w-56 py-4 px-5 mt-8 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-100 border-2 border-blue-600 hover:bg-blue-400"
+            className="w-56 py-2 xl:py-4 px-5 mt-8 lg:mt-0 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-100 border-2 border-blue-600 hover:bg-blue-400"
             onClick={() =>
               account ? deactivate() : activate(connectors.Injected)
             }
@@ -131,7 +131,7 @@ const IndexPage = () => {
               {account ? "Disconnect Wallet" : "Connect Wallet"}
             </p>
           </button>
-          <p className="mt-8 text-xl text-center">Available Rewards</p>
+          <p className="text-xl 2xl:text-3xl text-center mt-8 2xl:mt-20">Available Rewards</p>
           <div className="bg-white border border-gray-900 rounded-xl mt-2 px-20 py-4">
             <h1 className="text-5xl text-center font-medium">
               {availableVotes} POP
@@ -139,7 +139,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-9/12 mx-auto mt-28 h-full relative">
+      <div className="w-full xl:w-9/12 mx-auto mt-28 h-full relative">
         <h2 className="text-4xl font-medium text-center pt-4">
           Select your charity allocations
         </h2>
