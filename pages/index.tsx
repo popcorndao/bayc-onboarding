@@ -10,7 +10,7 @@ import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
 import checkApe from "utils/checkApe";
-import winningApes from "../public/winningApes.json";
+import airdrop from "../public/airdrop.json";
 enum Step {
   Wallet,
   Email,
@@ -107,7 +107,7 @@ export default function Index(): JSX.Element {
         setEthAddress(account);
       }
     } else {
-      winningApes.includes(account)
+      Object.keys(airdrop).includes(account)
         ? router.push("/beneficiaries")
         : router.push("/notFastEnough");
     }
@@ -150,7 +150,7 @@ export default function Index(): JSX.Element {
   }
 
   return (
-    <div className="w-full h-screen bg-white overflow-hidden">
+    <div className="w-full h-screen bg-primary overflow-hidden">
       <Navbar />
       <div className="z-10 relative flex justify-center mt-8 xl:mt-16 2xl:mt-24">
         <div className="flex flex-col w-1/3 mt-4">
@@ -342,7 +342,7 @@ export default function Index(): JSX.Element {
       </div>
       <img
         src="/images/landingBG.svg"
-        className="absolute bottom-0 z-0 w-full"
+        className="absolute bottom-0 z-0 w-full bg-white"
       />
     </div>
   );
