@@ -42,7 +42,7 @@ module.exports = {
         102: "1.02",
       },
       colors: {
-        primary: "#F28705",
+        primary: "#FDEAA7",
         primaryLight: "#FFF5D1",
         primaryDark: "#BF4904",
 
