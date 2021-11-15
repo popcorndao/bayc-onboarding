@@ -84,14 +84,11 @@ export default function Index(): JSX.Element {
   );
 
   useEffect(() => {
-    if (!supabase) {
-      return;
-    }
     if (PHASE === Phase.SignUp) {
       checkAvailableSlots(supabase).then((res) => setAvailableSlots(res));
       getRegisteredContacts(supabase).then((res) => setRegisteredContacts(res));
     }
-  }, [supabase]);
+  }, []);
 
   useEffect(() => {
     if (!account || !contracts) {
@@ -159,7 +156,9 @@ export default function Index(): JSX.Element {
             alt="hero"
             className="w-9/12 xl:w-full mx-auto"
           />
-          <h2 className="mx-auto text-center mt-8 w-9/12 text-2xl md:hidden">This site is not available on mobile...</h2>
+          <h2 className="mx-auto text-center mt-8 w-9/12 text-2xl md:hidden">
+            This site is not available on mobile...
+          </h2>
           <div className="hidden md:flex flex-col">
             <p className="text-lg xl:text-xl 2xl:text-3xl mt-8 2xl:mt-12 text-gray-900 font-light text-center">
               This airdrop sends 100 $POP to your wallet and 100 $POP to the
