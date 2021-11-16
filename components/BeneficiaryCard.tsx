@@ -51,12 +51,14 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
             <p className="text-xl font-light tracking-wide">
               <span className="text-xl font-medium mr-1">Why they pop:</span>
               {beneficiary.shortDesc}
+            </p>
+            <p>
               <a
-                className="text-blue-900 cursor-pointer ml-2"
+                className="text-blue-900 cursor-pointer text-xl"
                 href={beneficiary.url}
                 target="_blank"
               >
-                link
+                Visit the organization
               </a>
             </p>
           </div>

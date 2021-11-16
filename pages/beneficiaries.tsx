@@ -177,11 +177,15 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full xl:w-9/12 mx-auto mt-28 h-full relative">
-        <h2 className="text-4xl font-medium text-center pt-4">
-          Select your charity allocations
+      <div className="w-full xl:w-9/12 mx-auto mt-20 h-full relative">
+        <h2 className="w-1/2 mx-auto text-4xl font-medium text-center pt-4">
+          Congratulations!
         </h2>
-        <div className="w-9/12 mt-12 z-10 mx-auto">
+        <h2 className="w-1/2 mx-auto text-2xl text-center pt-2">
+          You can now allocate {MAX_VOTES} tokens between these organizations to
+          claim your POP.
+        </h2>
+        <div className="w-9/12 mt-14 z-10 mx-auto">
           <Beneficiary
             beneficiary={beneficiaries[beneficiaryIndex]}
             setVotes={updateVotes}
@@ -190,9 +194,9 @@ const IndexPage = () => {
             beneficiaryIndex={beneficiaryIndex}
             setBeneficiaryIndex={setBeneficiaryIndex}
           />
-          <div className="mt-36 2xl:mt-40 pl-4 ml-80 pb-24 relative z-20">
+          <div className="mt-24 2xl:mt-40 pl-4 ml-80 pb-24 relative z-20">
             <button
-              className="w-56 py-4 px-5flex flex-row rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              className="w-56 py-4 rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
               onClick={() => {
                 addVotes(account, votes).then((res) => {
                   res ? claimAirdrop() : router.push("/error");
@@ -206,7 +210,7 @@ const IndexPage = () => {
         </div>
         <img
           src="/images/beneficiaryBG.svg"
-          className="absolute top-20 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28"
+          className="absolute top-28 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28"
         />
       </div>
     </div>
