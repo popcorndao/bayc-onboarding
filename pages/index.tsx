@@ -28,7 +28,7 @@ interface RegisteredContacts {
 }
 
 const MAX_SLOTS = 500;
-const PHASE = Phase.SignUp;
+const PHASE = Phase.Claim;
 
 async function checkAvailableSlots(supabase: SupabaseClient): Promise<number> {
   const ids = (await supabase.from("Apes").select("id")) || ({} as any);
