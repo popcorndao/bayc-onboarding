@@ -39,7 +39,7 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
             </a>
             <p className="text-2xl font-light">0{beneficiaryIndex + 1}/05</p>
           </div>
-          <div className="space-y-8 h-96 mt-12">
+          <div className="space-y-5 h-104 mt-12">
             <p className="text-xl font-light tracking-wide">
               <span className="text-xl font-medium mr-1">Impact Area:</span>
               {beneficiary.area}

@@ -148,7 +148,7 @@ export default function Index(): JSX.Element {
         className={`hidden md:block w-full h-screen bg-white overflow-x-hidden`}
       >
         <div
-          className="w-full bg-contain bg-no-repeat bg-hero-pattern"
+          className="w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
           style={{ height: "109%" }}
         >
           <div className="pt-10 2xl:pt-12">
