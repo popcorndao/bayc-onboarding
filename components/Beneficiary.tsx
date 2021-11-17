@@ -29,7 +29,7 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
   setBeneficiaryIndex,
 }) => {
   return (
-    <div className="w-full relative z-20">
+    <div className="w-full relative z-20 pt-40">
       <div className="flex flex-row justify-between mx-auto w-full 2xl:w-8/12">
         <div className="w-1/3 mr-4">
           <img

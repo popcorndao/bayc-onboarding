@@ -54,7 +54,7 @@ module.exports = {
         ctaYellowLight: "#FFD324",
       },
       backgroundImage: (theme) => ({
-        "hero-pattern": "url('/images/popcorn_playing.gif')",
+        "hero-pattern": "url('/images/landingBG.svg')",
       }),
       fontFamily: {
         landing: ["Avenir Next LT Pro", "sans-serif"],

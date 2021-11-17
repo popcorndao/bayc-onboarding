@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="relative z-10 w-full flex justify-center mt-5 2xl:mt-16">
+    <nav className="relative z-10 w-full flex justify-center">
       <div className="flex flex-row items-center mx-auto">
         <img src="images/textLogo.png" alt="popLogo" className="h-8 xl:h-12 2xl:h-18"/>
         <p className="text-xl mx-8 mt-3">X</p>
