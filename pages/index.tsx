@@ -143,72 +143,111 @@ export default function Index(): JSX.Element {
   }
 
   return (
-    <div
-      className={`w-full h-screen bg-white overflow-x-hidden`}
-    >
+    <>
       <div
-        className="w-full bg-contain bg-no-repeat bg-hero-pattern"
-        style={{ height: "109%" }}
+        className={`hidden md:block w-full h-screen bg-white overflow-x-hidden`}
       >
-        <div className="pt-10 2xl:pt-12">
-          <Navbar />
-          <div className="flex flex-col w-full mt-12 xl:mt-24">
-            <img
-              src="/images/hero.png"
-              alt="hero"
-              className="w-1/3 mx-auto"
-            />
-            <h2 className="mx-auto text-center mt-8 w-9/12 text-2xl md:hidden">
-              This site is not available on mobile...
-            </h2>
-            <div className="hidden md:flex flex-col">
-              <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
-                This airdrop sends 100 $POP to your wallet and {MAX_VOTES} $POP
-                to the charities you select. Your airdropped tokens are locked
-                until $POP staking 2022). Simply verify BAYC charity
-                allocations, and await your airdrop. In meantime, join us in{" "}
-                <a
-                  className="font-normal cursor-pointer"
-                  href="https://discord.gg/RN4VGqPDwX"
-                  target="_blank"
-                >
-                  Discord
-                </a>{" "}
-                and follow us on{" "}
-                <a
-                  className="font-normal cursor-pointer"
-                  href="https://twitter.com/popcorn_DAO"
-                  target="_blank"
-                >
-                  Twitter
-                </a>
-              </p>
-              <MetamaskStep
-                isActive={step === Step.Wallet}
-                setStep={setStep}
-                availableSlots={availableSlots}
-                maxSlots={MAX_SLOTS}
-                activate={activate}
+        <div
+          className="w-full bg-contain bg-no-repeat bg-hero-pattern"
+          style={{ height: "109%" }}
+        >
+          <div className="pt-10 2xl:pt-12">
+            <Navbar />
+            <div className="flex flex-col w-full mt-12 xl:mt-24">
+              <img
+                src="/images/hero.png"
+                alt="hero"
+                className="w-1/3 mx-auto"
               />
-              <EndStep isActive={step === Step.End} />
-              <BeneficiaryStepTop
-                isActive={step === Step.Beneficiary}
-                maxVotes={MAX_VOTES}
-                availableVotes={availableVotes}
-              />
+              <div className="flex flex-col">
+                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
+                  $POP to the charities you select. Your airdropped tokens are
+                  locked until $POP staking 2022). Simply verify BAYC charity
+                  allocations, and await your airdrop. In meantime, join us in{" "}
+                  <a
+                    className="font-normal cursor-pointer"
+                    href="https://discord.gg/RN4VGqPDwX"
+                    target="_blank"
+                  >
+                    Discord
+                  </a>{" "}
+                  and follow us on{" "}
+                  <a
+                    className="font-normal cursor-pointer"
+                    href="https://twitter.com/popcorn_DAO"
+                    target="_blank"
+                  >
+                    Twitter
+                  </a>
+                </p>
+                <MetamaskStep
+                  isActive={step === Step.Wallet}
+                  setStep={setStep}
+                  availableSlots={availableSlots}
+                  maxSlots={MAX_SLOTS}
+                  activate={activate}
+                />
+                <EndStep isActive={step === Step.End} />
+                <BeneficiaryStepTop
+                  isActive={step === Step.Beneficiary}
+                  maxVotes={MAX_VOTES}
+                  availableVotes={availableVotes}
+                />
+              </div>
             </div>
           </div>
         </div>
+        <BeneficiaryStepBottom
+          isActive={step === Step.Beneficiary}
+          maxVotes={MAX_VOTES}
+          availableVotes={availableVotes}
+          setAvailableVotes={setAvailableVotes}
+          account={account}
+          registeredContacts={registeredContacts}
+          submitVotes={addApe}
+        />
       </div>
-      <BeneficiaryStepBottom
-        isActive={step === Step.Beneficiary}
-        maxVotes={MAX_VOTES}
-        availableVotes={availableVotes}
-        setAvailableVotes={setAvailableVotes}
-        account={account}
-        registeredContacts={registeredContacts}
-        submitVotes={addApe}
-      />
-    </div>
+      <div className="md:hidden">
+        <div className="w-full h-screen bg-primaryLight overflow-hidden">
+          <div className="mt-8 w-11/12 mx-auto">
+            <Navbar />
+          </div>
+          <div className="w-full text-center z-20 mt-24">
+            <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
+              This site is not available on mobile.
+            </h1>
+            <div className="z-20 mx-auto w-10/12 justify-center flex">
+              <div className="flex flex-row">
+                <p className="mt-4 text-xl font-light z-20">
+                  Follow our
+                  <a
+                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    href="https://discord.gg/RN4VGqPDwX"
+                    target="_blank"
+                  >
+                    Discord
+                  </a>{" "}
+                  and
+                  <a
+                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    href="https://twitter.com/popcorn_DAO"
+                    target="_blank"
+                  >
+                    Twitter
+                  </a>{" "}
+                  for the next drop!
+                </p>
+              </div>
+            </div>
+          </div>
+          <img
+            src="/images/mobileErrorBg.svg"
+            alt="bgError"
+            className="absolute bottom-0 -z-10 w-full"
+          />
+        </div>
+      </div>
+    </>
   );
 }
