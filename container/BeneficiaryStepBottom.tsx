@@ -48,7 +48,7 @@ export default function BeneficiaryStepBottom({
 
   return (
     isActive &&
-    !account && (
+    account && (
       <div className="w-10/12 mx-auto h-full relative">
         <div className="w-full mx-auto h-full relative">
           <div className="w-2/3 mx-auto">
