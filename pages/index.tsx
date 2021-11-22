@@ -144,34 +144,29 @@ export default function Index(): JSX.Element {
 
   return (
     <>
-      <div
-        className={`hidden md:block w-full h-screen bg-white overflow-x-hidden`}
-      >
-        <div
-          className="w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
-          style={{ height: "109%" }}
-        >
-          <div className="pt-10 2xl:pt-12">
-            <Navbar />
-            <div className="flex flex-col w-full mt-12 xl:mt-24">
+      <div className={"home"}>
+        <div className={"home-container"}>
+          <Navbar />
+          <div className="desktop-container flex-column">
               <img
                 src="/images/hero.png"
                 alt="hero"
                 className="w-1/3 mx-auto"
               />
               <div className="flex flex-col">
+                
                 <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
-                  TThis airdrop sends 100 $POP to your wallet and {MAX_VOTES}
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}
                   $POP to the charities you select. Your airdropped tokens are
                   locked until $POP staking in 2022. Simply verify BAYC
                   ownership, pick your charity allocations, and await your
-                  airdrop. In meantime, join us in
+                  airdrop. In meantime, join us on  
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
                     target="_blank"
                   >
-                    Discord
+                    {" "} Discord
                   </a>{" "}
                   and follow us on{" "}
                   <a
@@ -182,6 +177,7 @@ export default function Index(): JSX.Element {
                     Twitter
                   </a>
                 </p>
+
                 <MetamaskStep
                   isActive={step === Step.Wallet}
                   setStep={setStep}
@@ -189,16 +185,18 @@ export default function Index(): JSX.Element {
                   maxSlots={MAX_SLOTS}
                   activate={activate}
                 />
+
                 <EndStep isActive={step === Step.End} />
+                
                 <BeneficiaryStepTop
                   isActive={step === Step.Beneficiary}
                   maxVotes={MAX_VOTES}
                   availableVotes={availableVotes}
                 />
               </div>
-            </div>
           </div>
         </div>
+
         <BeneficiaryStepBottom
           isActive={step === Step.Beneficiary}
           maxVotes={MAX_VOTES}
@@ -209,45 +207,37 @@ export default function Index(): JSX.Element {
           submitVotes={addApe}
         />
       </div>
-      <div className="md:hidden">
-        <div className="w-full h-screen bg-primaryLight overflow-hidden">
-          <div className="mt-8 w-11/12 mx-auto">
-            <Navbar />
-          </div>
-          <div className="w-full text-center z-20 mt-24">
+
+      <div className={"mobile-container"}>
+      <div className={"mobile-background-image"}>
+        <div className={"mobile-content"}>
+          <Navbar />
+          <div>
             <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
               This site is not available on mobile.
             </h1>
-            <div className="z-20 mx-auto w-10/12 justify-center flex">
-              <div className="flex flex-row">
-                <p className="mt-4 text-xl font-light z-20">
+          </div>
+          <div>
+            <p className="mt-4 text-xl font-light z-20">
                   Follow our
                   <a
                     className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
                     href="https://discord.gg/RN4VGqPDwX"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Discord
                   </a>{" "}
                   and
                   <a
                     className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
                     href="https://twitter.com/popcorn_DAO"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Twitter
                   </a>{" "}
                   for the next drop!
-                </p>
-              </div>
-            </div>
+            </p>
           </div>
-          <img
-            src="/images/mobileErrorBg.svg"
-            alt="bgError"
-            className="absolute bottom-0 -z-10 w-full"
-          />
         </div>
+      </div>
       </div>
     </>
   );

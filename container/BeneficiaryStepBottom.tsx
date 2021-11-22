@@ -107,10 +107,6 @@ export default function BeneficiaryStepBottom({
                 )}
               </div>
             </div>
-            <img
-              src="/images/beneficiaryBG.svg"
-              className="absolute top-12 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28"
-            />
           </div>
         </div>
       </div>
