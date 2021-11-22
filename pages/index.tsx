@@ -161,11 +161,10 @@ export default function Index(): JSX.Element {
               />
               <div className="flex flex-col">
                 <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
-                  TThis airdrop sends 100 $POP to your wallet and {MAX_VOTES}
-                  $POP to the charities you select. Your airdropped tokens are
-                  locked until $POP staking in 2022. Simply verify BAYC
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
+                  $POP to the charities you select. Simply verify BAYC
                   ownership, pick your charity allocations, and await your
-                  airdrop. In meantime, join us in
+                  airdrop. In the meantime, join us in{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
