@@ -198,7 +198,7 @@ export default function Index(): JSX.Element {
             </div>
           </div>
         </div>
-        <BeneficiaryStepBottom
+        {chainId === 1 && <BeneficiaryStepBottom
           isActive={step === Step.Beneficiary}
           maxVotes={MAX_VOTES}
           availableVotes={availableVotes}
@@ -206,7 +206,7 @@ export default function Index(): JSX.Element {
           account={account}
           registeredContacts={registeredContacts}
           submitVotes={addApe}
-        />
+        />}
       </div>
       <div className="md:hidden">
         <div className="w-full h-screen bg-primaryLight overflow-hidden">
