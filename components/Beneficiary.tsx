@@ -30,13 +30,13 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
 }) => {
   return (
     <div className={"beneficiary"}>
-      <div className={"flex-column"}>
+      <div className={"beneficiary-column"}>
         <img
-            className="h-104 object-cover rounded-3xl"
+            className={"beneficiary-image"}
             src={`/images/${beneficiary.image.image}`}
             alt={beneficiary.image.description}
           />
-          <div className={"flex-row"}>
+          <div className={"beneficiary-row"}>
             <button
                 className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
                 onClick={() =>

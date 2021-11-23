@@ -9,6 +9,7 @@ body {
   height: 100%;
   background: #fff;
   position: relative;
+  overflow-x: hidden;
 }
 html,
 a {
@@ -134,11 +135,13 @@ p {
 }
 
 .home{
+  display: flex;
+  flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   background-image: url("../public/images/landingBG.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100vw auto;
 }
 
 .home-container{
@@ -181,90 +184,128 @@ p {
 
 .beneficiary{
   display: flex;
-  flex-direction: row;  
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.beneficiary-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.beneficiary-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.beneficiary-image{
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 450px;
+  max-height: 450px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.mobile-container{
+  display: none;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .home{
-    display: none;
+  .home p{
+    font-size: 1vw;
   }
 
-  .mobile-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100vw;
+  .home h1{
+    font-size: 1vw;
+  }
+
+  .beneficiary{
     height: 100vh;
-    background-color: rgba(255, 245, 209, 1);
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .home{
-    display: none;
+  .home p{
+    font-size: 1vw;
   }
 
-  .mobile-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100vw;
+  .home h1{
+    font-size: 1vw;
+  }
+
+  .beneficiary{
     height: 100vh;
-    background-color: rgba(255, 245, 209, 1);
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .home{
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../public/images/landingBG.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
+  .home p{
+    font-size: 1vw;
   }
 
-  .mobile-container{
-    display: none;  
+  .home h1{
+    font-size: 1vw;
+  }
+
+  .beneficiary{
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .home{
-    display: flex;
-    width: 100vw;
-    height: 130vh;
-    background-image: url("../public/images/landingBG.svg");
-    background-repeat: no-repeat;
-    background-size: 100vw auto;
+  .home p{
+    font-size: 1vw;
   }
 
-  .mobile-container{
-    display: none;
+  .home h1{
+    font-size: 1vw;
+  }
+
+  .beneficiary{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .home{
-    display: flex;
-    width: 100vw;
-    height: 130vh;
-    background-image: url("../public/images/landingBG.svg");
-    background-repeat: no-repeat;
-    background-size: 100vw auto;
+  .home p{
+    font-size: 1vw;
   }
 
-  .mobile-container{
-    display: none;
+  .home h1{
+    font-size: 1vw;
+  }
+
+  .beneficiary{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: center;
   }
 }

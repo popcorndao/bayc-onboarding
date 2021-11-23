@@ -12,6 +12,7 @@ import { store } from "context/store";
 import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
+import {BrowserView, MobileView} from 'react-device-detect';
 
 export enum Step {
   Wallet,
@@ -144,6 +145,7 @@ export default function Index(): JSX.Element {
 
   return (
     <>
+      <BrowserView>
       <div className={"home"}>
         <div className={"home-container"}>
           <Navbar />
@@ -207,7 +209,9 @@ export default function Index(): JSX.Element {
           submitVotes={addApe}
         />
       </div>
+      </BrowserView>
 
+      <MobileView>
       <div className={"mobile-container"}>
       <div className={"mobile-background-image"}>
         <div className={"mobile-content"}>
@@ -239,6 +243,7 @@ export default function Index(): JSX.Element {
         </div>
       </div>
       </div>
+      </MobileView>
     </>
   );
 }
