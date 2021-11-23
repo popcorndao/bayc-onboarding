@@ -52,7 +52,6 @@ export default function MetamaskStep({
             Connect Wallet
           </p>
         </button>
-        )
         <p className="text-xl xl:text-3xl 2xl:text-4xl font-semibold text-center">
           {availableSlots}/{maxSlots} Left
         </p>

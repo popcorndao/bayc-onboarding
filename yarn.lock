@@ -4442,6 +4442,11 @@ electron@^13.1.5:
     "@types/node" "^14.6.2"
     extract-zip "^1.0.3"
 
+element-resize-event@^2.0.5:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/element-resize-event/-/element-resize-event-2.0.9.tgz#2f5e1581a296eb5275210c141bc56342e218f876"
+  integrity sha1-L14VgaKW61J1IQwUG8VjQuIY+HY=
+
 elliptic@6.5.4, elliptic@^6.4.0, elliptic@^6.5.2, elliptic@^6.5.3:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz#da37cebd31e79a1367e941b592ed1fbebd58abbb"
@@ -9429,7 +9434,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@15.7.2, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9729,6 +9734,14 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-auto-scale@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-auto-scale/-/react-auto-scale-1.0.4.tgz#fcb5936c7fa38486b2e2812d1ebe739652b5216f"
+  integrity sha1-/LWTbH+jhIay4oEtHr5zllK1IW8=
+  dependencies:
+    element-resize-event "^2.0.5"
+    prop-types "^15.6.0"
 
 react-device-detect@^2.1.2:
   version "2.1.2"

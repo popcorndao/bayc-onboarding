@@ -13,6 +13,7 @@ import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
 import {BrowserView, MobileView} from 'react-device-detect';
+import AutoScale from 'react-auto-scale';
 
 export enum Step {
   Wallet,
@@ -146,18 +147,17 @@ export default function Index(): JSX.Element {
   return (
     <>
       <BrowserView>
-      <div className={"home"}>
-        <div className={"home-container"}>
-          <Navbar />
-          <div className="desktop-container flex-column">
+        <div className={"home"}>
+        <AutoScale>
+          <div className={"home-container"}>
+            <Navbar />
+            <div className={"home-content"}>
               <img
                 src="/images/hero.png"
                 alt="hero"
-                className="w-1/3 mx-auto"
-              />
-              <div className="flex flex-col">
-                
-                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
+                className={"hero-image"}/>
+
+              <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
                   This airdrop sends 100 $POP to your wallet and {MAX_VOTES}
                   $POP to the charities you select. Your airdropped tokens are
                   locked until $POP staking in 2022. Simply verify BAYC
@@ -179,14 +179,18 @@ export default function Index(): JSX.Element {
                     Twitter
                   </a>
                 </p>
+            </div>
+            <MetamaskStep
+              isActive={step === Step.Wallet}
+              setStep={setStep}
+              availableSlots={availableSlots}
+              maxSlots={MAX_SLOTS}
+              activate={activate}/>
+          
+        </div>
 
-                <MetamaskStep
-                  isActive={step === Step.Wallet}
-                  setStep={setStep}
-                  availableSlots={availableSlots}
-                  maxSlots={MAX_SLOTS}
-                  activate={activate}
-                />
+
+        {/*
 
                 <EndStep isActive={step === Step.End} />
                 
@@ -195,9 +199,6 @@ export default function Index(): JSX.Element {
                   maxVotes={MAX_VOTES}
                   availableVotes={availableVotes}
                 />
-              </div>
-          </div>
-        </div>
 
         <BeneficiaryStepBottom
           isActive={step === Step.Beneficiary}
@@ -207,7 +208,8 @@ export default function Index(): JSX.Element {
           account={account}
           registeredContacts={registeredContacts}
           submitVotes={addApe}
-        />
+        />*/}
+        </AutoScale>
       </div>
       </BrowserView>
 
