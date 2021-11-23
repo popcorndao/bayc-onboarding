@@ -157,7 +157,7 @@ export default function Index(): JSX.Element {
                   alt="hero"
                   className={"hero-image"}/>
 
-                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
+                <p className={"home-text"}>
                   This airdrop sends 100 $POP to your wallet and {MAX_VOTES}
                   $POP to the charities you select. Your airdropped tokens are
                   locked until $POP staking in 2022. Simply verify BAYC

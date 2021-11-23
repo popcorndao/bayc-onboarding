@@ -191,12 +191,11 @@ p {
 @media only screen and (max-width: 600px) {
   .home p{
     display: inline-block;
-    font-size: 1vw;
-    line-height: 10px;
+    font-size: 16px;
   }
 
   .home h1{
-    font-size: 1vw;
+    font-size: 18px;
   }
 
   .hero-image{
@@ -215,13 +214,12 @@ p {
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 250vw auto;
+    background-size: 300vw auto;
   }
   
   .home-container{
     position: relative;
-    height: 100vh;
-    width:100vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,8 +233,13 @@ p {
     align-items: center;
     justify-content: flex-start;
   }
-  
 
+  .home-text{
+    text-align: center;
+    margin-top: 40px;
+    min-width: 90%;
+  }
+  
   .beneficiary{
     display: flex;
     flex-direction: row;
@@ -264,12 +267,88 @@ p {
 @media only screen and (min-width: 600px) {
   .home p{
     display: inline-block;
-    font-size: 1vw;
-    line-height: 10px;
+    font-size: 18px;
   }
 
   .home h1{
-    font-size: 1vw;
+    font-size: 20px;
+  }
+
+  .hero-image{
+    margin-top: 40px;
+    max-width: 40%;
+    min-width: 40%;
+    height: auto;
+  }
+
+  .home{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 120vh;
+    background-image: url("../public/images/landingBG.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 300vw auto;
+  }
+  
+  .home-container{
+    position: relative;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .home-content{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .home-text{
+    text-align: center;
+    margin-top: 40px;
+    width: 80%;
+  }
+  
+
+  .beneficiary{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .beneficiary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .home p{
+    display: inline-block;
+    font-size: 21px;
+  }
+
+  .home h1{
+    font-size: 23px;
   }
 
   .hero-image{
@@ -293,8 +372,7 @@ p {
   
   .home-container{
     position: relative;
-    height: 100vh;
-    width:100vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -305,90 +383,24 @@ p {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-
-  .beneficiary{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .beneficiary-row{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: space-between;
+    align-items: center;
     justify-content: space-between;
   }
 
-  .beneficiary-column{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .home p{
-    display: inline-block;
-    font-size: 1vw;
-    line-height: 10px;
-  }
-
-  .home h1{
-    font-size: 1vw;
-  }
-
-  .home{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 120vh;
-    background-image: url("../public/images/landingBG.svg");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: 150vw auto;
-  }
-  
-  .home-container{
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  .home-content{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-image{
+  .home-text{
+    text-align: center;
     margin-top: 40px;
-    max-width: 40%;
-    min-width: 40%;
-    height: auto;
+    width: 40%;
   }
 
-  .beneficiary{
+  .beneficiary{ 
+    height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;  
     align-items: flex-start;
     justify-content: center;
-  }
+    flex-wrap: nowrap;
+  }  
 
   .beneficiary-row{
     width: 100%;
@@ -410,12 +422,11 @@ p {
 @media only screen and (min-width: 992px) {
   .home p{
     display: inline-block;
-    font-size: 1vw;
-    line-height: 25px;
+    font-size: 21px;
   }
 
   .home h1{
-    font-size: 1vw;
+    font-size: 23px;
   }
 
   .hero-image{
@@ -430,11 +441,11 @@ p {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 120v;
+    height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 120vw auto;
+    background-size: 150vw auto;
   }
   
   .home-container{
@@ -452,23 +463,30 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
 
-  .beneficiary{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
+  .home-text{
+    text-align: center;
+    margin-top: 40px;
+    width: 40%;
   }
+
+  .beneficiary{ 
+    height: 100vh;
+    display: flex;
+    flex-direction: row;  
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }  
 
   .beneficiary-row{
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: space-between;
+    justify-content: space-between;
   }
 
   .beneficiary-column{
@@ -483,12 +501,11 @@ p {
 @media only screen and (min-width: 1200px) {
   .home p{
     display: inline-block;
-    font-size: 1vw;
-    line-height: 30px;
+    font-size: 21px;
   }
 
   .home h1{
-    font-size: 1vw;
+    font-size: 23px;
   }
 
   .hero-image{
@@ -526,6 +543,12 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .home-text{
+    text-align: center;
+    margin-top: 40px;
+    width: 40%;
   }
 
   .beneficiary{ 
