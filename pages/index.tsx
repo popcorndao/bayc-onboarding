@@ -148,16 +148,16 @@ export default function Index(): JSX.Element {
     <>
       <BrowserView>
         <div className={"home"}>
-        <AutoScale>
-          <div className={"home-container"}>
-            <Navbar />
-            <div className={"home-content"}>
-              <img
-                src="/images/hero.png"
-                alt="hero"
-                className={"hero-image"}/>
+          <AutoScale>
+            <div className={"home-container"}>
+              <Navbar />
+              <div className={"home-content"}>
+                <img
+                  src="/images/hero.png"
+                  alt="hero"
+                  className={"hero-image"}/>
 
-              <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
+                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
                   This airdrop sends 100 $POP to your wallet and {MAX_VOTES}
                   $POP to the charities you select. Your airdropped tokens are
                   locked until $POP staking in 2022. Simply verify BAYC
@@ -166,51 +166,41 @@ export default function Index(): JSX.Element {
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
-                    target="_blank"
-                  >
+                    target="_blank">
                     {" "} Discord
                   </a>{" "}
                   and follow us on{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Twitter
                   </a>
                 </p>
             </div>
+
             <MetamaskStep
               isActive={step === Step.Wallet}
               setStep={setStep}
               availableSlots={availableSlots}
               maxSlots={MAX_SLOTS}
               activate={activate}/>
-          
-        </div>
-
-
-        {/*
-
-                <EndStep isActive={step === Step.End} />
-                
-                <BeneficiaryStepTop
-                  isActive={step === Step.Beneficiary}
-                  maxVotes={MAX_VOTES}
-                  availableVotes={availableVotes}
-                />
-
-        <BeneficiaryStepBottom
+            <EndStep isActive={step === Step.End} />
+            <BeneficiaryStepTop
+              isActive={step === Step.Beneficiary}
+              maxVotes={MAX_VOTES}
+              availableVotes={availableVotes}/>
+          </div>
+        </AutoScale>
+      </div>
+      <BeneficiaryStepBottom
           isActive={step === Step.Beneficiary}
           maxVotes={MAX_VOTES}
           availableVotes={availableVotes}
           setAvailableVotes={setAvailableVotes}
           account={account}
           registeredContacts={registeredContacts}
-          submitVotes={addApe}
-        />*/}
-        </AutoScale>
-      </div>
+          submitVotes={addApe}/>
       </BrowserView>
 
       <MobileView>

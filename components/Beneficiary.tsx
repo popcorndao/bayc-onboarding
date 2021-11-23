@@ -58,14 +58,12 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
             </button>
           </div>
       </div>
-      <div className={"flex-row"}>
-        <BeneficiaryCard
-          beneficiary={beneficiary}
-          setVotes={setVotes}
-          maxVotes={maxVotes}
-          assignedVotes={assignedVotes}
-          beneficiaryIndex={beneficiaryIndex}/>
-      </div>
+      <BeneficiaryCard
+        beneficiary={beneficiary}
+        setVotes={setVotes}
+        maxVotes={maxVotes}
+        assignedVotes={assignedVotes}
+        beneficiaryIndex={beneficiaryIndex}/>
     </div>
   );
 };

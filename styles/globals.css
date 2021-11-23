@@ -94,7 +94,6 @@ p {
 }
 
 .button-custom {
-  /* border-radius: 0.25rem; */
   font-family: 'Avenir Next LT Pro';
   padding: 15px;
   padding-top: 9px;
@@ -105,13 +104,9 @@ p {
   justify-content: center;
   align-items: center;
   width: auto;
-  /* color: white; */
-  /* font-weight: 600; */
-  /* box-shadow: 0px 2px 8px -3px black; */
 }
 
 .gray-color {
-  /* background-color: #e5e7eb; */
   border-color: #636363;
   color: #636363;
 }
@@ -173,27 +168,6 @@ p {
   background-position: bottom;
 }
 
-.beneficiary{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.beneficiary-column{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.beneficiary-row{
-  display: flex;
-  flex-direction: row;
-  align-items: space-between;
-  justify-content: space-between;
-}
-
 .beneficiary-image{
   min-width: 400px;
   max-width: 400px;
@@ -216,7 +190,9 @@ p {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .home p{
+    display: inline-block;
     font-size: 1vw;
+    line-height: 10px;
   }
 
   .home h1{
@@ -265,15 +241,31 @@ p {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
+  }
+
+  .beneficiary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    flex-wrap: wrap;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .home p{
+    display: inline-block;
     font-size: 1vw;
+    line-height: 10px;
   }
 
   .home h1{
@@ -313,8 +305,8 @@ p {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: center;
   }
 
 
@@ -325,12 +317,29 @@ p {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+
+  .beneficiary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .home p{
+    display: inline-block;
     font-size: 1vw;
+    line-height: 10px;
   }
 
   .home h1{
@@ -376,24 +385,33 @@ p {
 
   .beneficiary{
     display: flex;
-    flex-direction: row;  
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: center;
   }
 
-  .beneficiary{
+  .beneficiary-row{
+    width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    flex-wrap: wrap;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .home p{
+    display: inline-block;
     font-size: 1vw;
+    line-height: 25px;
   }
 
   .home h1{
@@ -444,12 +462,29 @@ p {
     justify-content: flex-start;
     flex-wrap: nowrap;
   }
+
+  .beneficiary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .home p{
+    display: inline-block;
     font-size: 1vw;
+    line-height: 30px;
   }
 
   .home h1{
@@ -497,8 +532,23 @@ p {
     height: 100vh;
     display: flex;
     flex-direction: row;  
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }  
+
+  .beneficiary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
+  .beneficiary-column{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
