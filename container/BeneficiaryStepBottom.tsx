@@ -63,8 +63,9 @@ export default function BeneficiaryStepBottom({
                     beneficiaryIndex={beneficiaryIndex}
                     setBeneficiaryIndex={setBeneficiaryIndex}
                   />
-                  <div className="mt-36 pl-4 ml-24 pb-24 relative z-20">
-                    <div className="relative z-20 mx-auto mt-5 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
+                  <div className="mt-28 pl-4 ml-24 pb-24 relative z-20">
+                    <p className="text-gray-500 text-base text-center">Submit your email to finish your token claim</p>
+                    <div className="relative z-20 mx-auto mt-2 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
                       <input
                         type="email"
                         name="email"
