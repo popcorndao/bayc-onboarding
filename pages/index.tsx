@@ -91,9 +91,9 @@ export default function Index(): JSX.Element {
     if (registeredContacts.addresses.includes(account)) {
       router.push("/alreadyRegistered");
     } else {
-      checkApe(contracts.bayc, account).then(
-        (hasApe) => !hasApe && router.push("/noApe")
-      );
+      // checkApe(contracts.bayc, account).then(
+      //   (hasApe) => !hasApe && router.push("/noApe")
+      // );
       setEthAddress(account);
     }
   }, [account]);
@@ -108,7 +108,7 @@ export default function Index(): JSX.Element {
       .signMessage("By signing this message, I verify I own this address");
     if (message) {
       try {
-        await supabase.from("Apes").insert([
+        await supabase.from("Apes2").insert([
           {
             address: account ? account : ethAddress,
             email: email,
