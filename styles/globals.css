@@ -198,6 +198,10 @@ p {
     font-size: 18px;
   }
 
+  .card p{
+    font-size: 16px;
+  }
+
   .hero-image{
     margin-top: 40px;
     max-width: 40%;
@@ -245,6 +249,7 @@ p {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .beneficiary-row{
@@ -272,6 +277,10 @@ p {
 
   .home h1{
     font-size: 20px;
+  }
+
+  .card p{
+    font-size: 18px;
   }
 
   .hero-image{
@@ -322,6 +331,7 @@ p {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .beneficiary-row{
@@ -349,6 +359,10 @@ p {
 
   .home h1{
     font-size: 23px;
+  }
+
+  .card p{
+    font-size: 16px;
   }
 
   .hero-image{
@@ -399,7 +413,7 @@ p {
     flex-direction: row;  
     align-items: flex-start;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }  
 
   .beneficiary-row{
@@ -427,6 +441,14 @@ p {
 
   .home h1{
     font-size: 23px;
+  }
+
+  .card{
+    width: 100vw;
+  }
+
+  .card p{
+    font-size: 16px;
   }
 
   .hero-image{
@@ -506,6 +528,14 @@ p {
 
   .home h1{
     font-size: 23px;
+  }
+
+  .card{
+    width: 100vw;
+  }
+
+  .card p{
+    font-size: 16px;
   }
 
   .hero-image{

@@ -26,7 +26,7 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
   beneficiaryIndex,
 }) => {
   return (
-    <div className="rounded-3xl shadow-lg border border-gray-200 ml-8 mt-8 pb-8 relative z-20 bg-white">
+    <div className="rounded-3xl shadow-lg border border-gray-200 ml-8 mt-8 pb-8 relative z-20 bg-white card">
       <div className="flex-shrink-0">
         <div className="px-10 pb-12 mt-8">
           <div className="flex flex-row items-top justify-between h-32">
