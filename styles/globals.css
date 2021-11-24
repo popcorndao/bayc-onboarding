@@ -295,7 +295,6 @@ p {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
@@ -463,7 +462,6 @@ p {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
@@ -472,7 +470,6 @@ p {
   
   .home-container{
     position: relative;
-    height: 100vh;
     width:100vw;
     display: flex;
     flex-direction: column;
@@ -532,6 +529,7 @@ p {
 
   .card{
     width: 100vw;
+    --tw-shadow: 
   }
 
   .card p{
@@ -549,7 +547,6 @@ p {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100vw;
     height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
@@ -559,8 +556,6 @@ p {
   
   .home-container{
     position: relative;
-    height: 100vh;
-    width:100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
