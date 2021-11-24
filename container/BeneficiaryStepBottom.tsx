@@ -61,52 +61,50 @@ export default function BeneficiaryStepBottom({
                 beneficiaryIndex={beneficiaryIndex}
                 setBeneficiaryIndex={setBeneficiaryIndex}
               />
-              {/*<div className="mt-44 pl-4 ml-60 pb-24 relative z-20">
-                <div className="relative z-20 mx-auto mt-5 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-10/12 p-2 border-none text-base mx-2 text-gray-900"
-                    placeholder="Email"
-                    required
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value.toLowerCase());
-                      setEmailError(
-                        !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-                          e.target.value.toLowerCase()
-                        )
-                      );
-                    }}
-                  />
-                  <div className="clear">
-                    <input
-                      type="submit"
-                      value="Register"
-                      name="submit"
-                      className="font-medium text-base bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2 cursor-pointer disabled:bg-gray-500"
-                      disabled={emailError || availableVotes > 0 || !account}
-                      onClick={() => {
-                        if (email.length > 0 && !emailError) {
-                          if (registeredContacts.emails.includes(email)) {
-                            router.push("/alreadyRegistered");
-                          } else {
-                            submitVotes(account, email, votes);
-                          }
-                        } else {
-                          setEmailError(true);
-                        }
-                      }}
-                    />
-                  </div>
-                </div>
-                {emailError && (
+            </div>
+
+            {emailError && (
                   <p className="text-red-500 w-10/12 2xl:w-8/12 mx-auto mt-2">
                     Please enter a valid email address
                   </p>
-                )}
-              </div>*/}
+            )}
+
+            <div className={"email-input"}>
+              <input
+                type="email"
+                name="email"
+                className="w-10/12 p-2 border-none text-base mx-2 text-gray-900"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value.toLowerCase());
+                  setEmailError(
+                    !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                      e.target.value.toLowerCase()
+                    ));
+                }}/>
+                <div className="clear">
+                  <input
+                    type="submit"
+                    value="Register"
+                    name="submit"
+                    className="font-medium text-base bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2 cursor-pointer disabled:bg-gray-500"
+                    disabled={emailError || availableVotes > 0 || !account}
+                    onClick={() => {
+                      if (email.length > 0 && !emailError) {
+                        if (registeredContacts.emails.includes(email)) {
+                          router.push("/alreadyRegistered");
+                        } else {
+                          submitVotes(account, email, votes);
+                        }
+                      } else {
+                        setEmailError(true);
+                      }
+                    }}/>
+                </div>
             </div>
+            
           </div>
         </div>
       </div>
