@@ -26,51 +26,50 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
   beneficiaryIndex,
 }) => {
   return (
-    <div className="rounded-3xl shadow-lg border border-gray-200 ml-8 mt-8 pb-8 relative z-20 bg-white card">
-      <div className="flex-shrink-0">
-        <div className="px-10 pb-12 mt-8">
-          <div className="flex flex-row items-top justify-between h-32">
-            <a
-              className="text-6xl cursor-pointer w-2/3"
-              href={beneficiary.url}
-              target="_blank"
-            >
-              {beneficiary.name}
-            </a>
-            <p className="text-2xl font-light">0{beneficiaryIndex + 1}/05</p>
-          </div>
-          <div className="space-y-5 h-104 mt-12">
-            <p className="text-xl font-light tracking-wide">
-              <span className="text-xl font-medium mr-1">Impact Area:</span>
-              {beneficiary.area}
-            </p>
-            <p className="text-xl font-light tracking-wide">
-              <span className="text-xl font-medium mr-1">Mission:</span>
-              {beneficiary.impactDesc}
-            </p>
-            <p className="text-xl font-light tracking-wide">
-              <span className="text-xl font-medium mr-1">Why they pop:</span>
-              {beneficiary.shortDesc}
-            </p>
-            <p>
-              <a
-                className="text-blue-900 cursor-pointer text-xl"
-                href={beneficiary.url}
-                target="_blank"
-              >
-                Visit the organization
-              </a>
-            </p>
-          </div>
-          <div className="mt-12">
-            <VoteSlider
-              setVotes={setVotes}
-              maxVotes={maxVotes}
-              assignedVotes={assignedVotes}
-              beneficiaryIndex={beneficiaryIndex}
-            />
-          </div>
-        </div>
+    <div className={"card"}>
+      <div>
+        <a
+          className="text-6xl cursor-pointer w-2/3"
+          href={beneficiary.url}
+          target="_blank">
+          {beneficiary.name}        
+        </a>
+      </div>
+      <div>
+        <p className="text-2xl font-light">0{beneficiaryIndex + 1}/05</p>
+      </div>
+      <div>
+        <p className="text-xl font-light tracking-wide">
+          <span className="text-xl font-medium mr-1">Impact Area:</span>
+          {beneficiary.area}
+        </p>
+      </div>
+      <div>
+        <p className="text-xl font-light tracking-wide">
+          <span className="text-xl font-medium mr-1">Mission:</span>
+          {beneficiary.impactDesc}
+        </p>
+      </div>
+      <div className="space-y-5 h-104 mt-12">
+        <p className="text-xl font-light tracking-wide">
+          <span className="text-xl font-medium mr-1">Why they pop:</span>
+            {beneficiary.shortDesc}
+        </p>
+        <p>
+          <a
+            className="text-blue-900 cursor-pointer text-xl"
+            href={beneficiary.url}
+            target="_blank">
+            Visit the organization
+          </a>
+        </p>
+      </div>
+      <div className="mt-12">
+        <VoteSlider
+          setVotes={setVotes}
+          maxVotes={maxVotes}
+          assignedVotes={assignedVotes}
+          beneficiaryIndex={beneficiaryIndex}/>
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ export default function BeneficiaryStepBottom({
                 beneficiaryIndex={beneficiaryIndex}
                 setBeneficiaryIndex={setBeneficiaryIndex}
               />
-              <div className="mt-44 pl-4 ml-60 pb-24 relative z-20">
+              {/*<div className="mt-44 pl-4 ml-60 pb-24 relative z-20">
                 <div className="relative z-20 mx-auto mt-5 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
                   <input
                     type="email"
@@ -105,7 +105,7 @@ export default function BeneficiaryStepBottom({
                     Please enter a valid email address
                   </p>
                 )}
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>

@@ -20,6 +20,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
 p {
   font-size: 4vw;
 }
@@ -187,6 +188,16 @@ p {
   margin-bottom: 40px;
 }
 
+.card{
+  width: 100%;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  --tw-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);
+  box-shadow: var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow);
+  border: 1px solid rgba(59,130,246,0.2);
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .home p{
@@ -218,7 +229,7 @@ p {
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 300vw auto;
+    background-size: auto 100%;
   }
   
   .home-container{
@@ -250,6 +261,8 @@ p {
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 40px;
+    padding-bottom: 40px;
   }
 
   .beneficiary-row{
@@ -298,7 +311,7 @@ p {
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 300vw auto;
+    background-size: auto 100%;
   }
   
   .home-container{
@@ -331,6 +344,8 @@ p {
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 40px;
+    padding-bottom: 40px;
   }
 
   .beneficiary-row{
@@ -379,7 +394,7 @@ p {
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 200vw auto;
+    background-size: auto 100%;
   }
   
   .home-container{
@@ -410,8 +425,10 @@ p {
     display: flex;
     flex-direction: row;  
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin-top: 40px;
+    padding-bottom: 40px;
   }  
 
   .beneficiary-row{
@@ -441,16 +458,11 @@ p {
     font-size: 23px;
   }
 
-  .card{
-    width: 100vw;
-  }
-
   .card p{
     font-size: 16px;
   }
 
   .hero-image{
-    margin-top: 40px;
     max-width: 40%;
     min-width: 40%;
     height: auto;
@@ -464,7 +476,7 @@ p {
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 150vw auto;
+    background-size: auto 100%;
   }
   
   .home-container{
@@ -495,8 +507,10 @@ p {
     display: flex;
     flex-direction: row;  
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
+    margin-top: 40px;
+    padding-bottom: 40px;
   }  
 
   .beneficiary-row{
@@ -524,11 +538,7 @@ p {
 
   .home h1{
     font-size: 23px;
-  }
-
-  .card{
-    width: 100vw;
-    --tw-shadow: 
+    line-height: 20px;
   }
 
   .card p{
@@ -536,21 +546,21 @@ p {
   }
 
   .hero-image{
-    margin-top: 40px;
     max-width: 40%;
-    min-width: 40%;
+    min-width: 30%;
     height: auto;
   }
 
   .home{
     position: relative;
     display: flex;
+    padding-bottom: 20px;
+    min-height: 100vh;
     flex-direction: column;
-    height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: 100vw auto;
+    background-size: auto 100%;  
   }
   
   .home-container{
@@ -573,6 +583,7 @@ p {
     text-align: center;
     margin-top: 40px;
     width: 40%;
+    line-height: 100%;
   }
 
   .beneficiary{ 
@@ -580,8 +591,10 @@ p {
     display: flex;
     flex-direction: row;  
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: nowrap;
+    margin-top: 40px;
+    padding-bottom: 40px;
   }  
 
   .beneficiary-row{
@@ -597,5 +610,20 @@ p {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1500px) {
+  .home{
+    position: relative;
+    display: flex;
+    padding-bottom: 20px;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url("../public/images/landingBG.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;  
   }
 }
