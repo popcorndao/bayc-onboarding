@@ -145,11 +145,11 @@ export default function Index(): JSX.Element {
   return (
     <>
       <div
-        className={`hidden md:block w-full h-screen bg-white overflow-x-hidden`}
+        className={`hidden base:block w-full h-screen bg-white overflow-x-hidden`}
       >
         <div
-          className="w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
-          style={{ height: "109%" }}
+          className="relative z-20 overflow-visible h-full min-h-screen w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
+          style={{ height: "111%" }}
         >
           <div className="pt-10 2xl:pt-12">
             <Navbar />
@@ -160,7 +160,7 @@ export default function Index(): JSX.Element {
                 className="w-1/3 mx-auto"
               />
               <div className="flex flex-col">
-                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 w-1/3 mx-auto text-gray-900 font-light text-center">
+                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 base:w-6/12 lg:w-1/3 mx-auto text-gray-900 font-light text-center">
                   This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
                   $POP to the charities you select. Simply verify BAYC
                   ownership, pick your charity allocations, and await your
@@ -208,7 +208,7 @@ export default function Index(): JSX.Element {
           submitVotes={addApe}
         />}
       </div>
-      <div className="md:hidden">
+      <div className="base:hidden">
         <div className="w-full h-screen bg-primaryLight overflow-hidden">
           <div className="mt-8 w-11/12 mx-auto">
             <Navbar />
