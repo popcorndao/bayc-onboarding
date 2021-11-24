@@ -376,7 +376,6 @@ p {
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 120vh;
     background-image: url("../public/images/landingBG.svg");
     background-position: center top;
     background-repeat: no-repeat;
