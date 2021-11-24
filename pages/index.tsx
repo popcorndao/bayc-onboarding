@@ -108,7 +108,7 @@ export default function Index(): JSX.Element {
       .signMessage("By signing this message, I verify I own this address");
     if (message) {
       try {
-        await supabase.from("Apes2").insert([
+        await supabase.from("Apes").insert([
           {
             address: account ? account : ethAddress,
             email: email,
