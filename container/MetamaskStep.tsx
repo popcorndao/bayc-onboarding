@@ -29,10 +29,10 @@ export default function MetamaskStep({
           <img src={`/images/arrowGray.svg`} className="mx-2" />
           <div
             className={`rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 flex justify-center items-center
-            border-gray-500`}
+            border-gray-400`}
           >
             <p
-              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-gray-500`}
+              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-gray-400`}
             >
               2
             </p>
