@@ -108,7 +108,7 @@ export default function Index(): JSX.Element {
       .signMessage("By signing this message, I verify I own this address");
     if (message) {
       try {
-        await supabase.from("Apes").insert([
+        await supabase.from("Apes2").insert([
           {
             address: account ? account : ethAddress,
             email: email,
@@ -199,55 +199,147 @@ export default function Index(): JSX.Element {
             </div>
           </div>
         </div>
-        {chainId === 1 && <BeneficiaryStepBottom
-          isActive={step === Step.Beneficiary}
-          maxVotes={MAX_VOTES}
-          availableVotes={availableVotes}
-          setAvailableVotes={setAvailableVotes}
-          account={account}
-          registeredContacts={registeredContacts}
-          submitVotes={addApe}
-        />}
+        {chainId === 1 && (
+          <BeneficiaryStepBottom
+            isActive={step === Step.Beneficiary}
+            maxVotes={MAX_VOTES}
+            availableVotes={availableVotes}
+            setAvailableVotes={setAvailableVotes}
+            account={account}
+            registeredContacts={registeredContacts}
+            submitVotes={addApe}
+          />
+        )}
       </div>
-      <div className="base:hidden">
-        <div className="w-full h-screen bg-primaryLight overflow-hidden">
-          <div className="mt-8 w-11/12 mx-auto">
+      <div
+        className={`hidden w-full h-screen bg-white overflow-x-hidden`}
+      >
+        <div
+          className="relative h-full min-h-screen w-screen bg-center bg-contain bg-no-repeat bg-hero-pattern"
+          style={{ height: "111%" }}
+        >
+          <div className="">
             <Navbar />
-          </div>
-          <div className="w-full text-center z-20 mt-24">
-            <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
-              This site is not available on mobile.
-            </h1>
-            <div className="z-20 mx-auto w-10/12 justify-center flex">
-              <div className="flex flex-row">
-                <p className="mt-4 text-xl font-light z-20">
-                  Follow our
+            <div className="flex flex-col w-full">
+              <div className="h-full bg-primary pt-12">
+                <img
+                  src="/images/hero.png"
+                  alt="hero"
+                  className="w-1/3 mx-auto"
+                />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-lg xl:text-xl 2xl:text-3xl base:w-6/12 lg:w-1/3 pt-12 mx-auto text-gray-900 font-light text-center bg-primary">
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
+                  $POP to the charities you select. Simply verify BAYC
+                  ownership, pick your charity allocations, and await your
+                  airdrop. In the meantime, join us in{" "}
                   <a
-                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
                     target="_blank"
                   >
                     Discord
                   </a>{" "}
-                  and
+                  and follow us on{" "}
                   <a
-                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
                     target="_blank"
                   >
                     Twitter
-                  </a>{" "}
-                  for the next drop!
+                  </a>
                 </p>
+                <MetamaskStep
+                  isActive={step === Step.Wallet}
+                  setStep={setStep}
+                  availableSlots={availableSlots}
+                  maxSlots={MAX_SLOTS}
+                  activate={activate}
+                />
+                <EndStep isActive={step === Step.End} />
+                <BeneficiaryStepTop
+                  isActive={step === Step.Beneficiary}
+                  maxVotes={MAX_VOTES}
+                  availableVotes={availableVotes}
+                />
               </div>
             </div>
           </div>
-          <img
-            src="/images/mobileErrorBg.svg"
+        </div>
+        {chainId === 1 && (
+          <BeneficiaryStepBottom
+            isActive={step === Step.Beneficiary}
+            maxVotes={MAX_VOTES}
+            availableVotes={availableVotes}
+            setAvailableVotes={setAvailableVotes}
+            account={account}
+            registeredContacts={registeredContacts}
+            submitVotes={addApe}
+          />
+        )}
+      </div>
+      <div className="base:hidden">
+        <div className="w-full h-full bg-white overflow-x-hidden bg-mobile-pattern bg-cover bg-bottom bg-no-repeat mb-8 sm:mb-16">
+          <div className="mt-4 w-11/12 mx-auto">
+            <Navbar />
+          </div>
+          <div className="relative z-10">
+            <img src="/images/illustration.png" className="mt-4 w-full" />
+            <p className="w-11/12 md:w-9/12 text-base md:text-xl md:mt-8 mx-auto text-gray-900 font-light text-center">
+              This airdrop sends 100 $POP to your wallet and {MAX_VOTES} $POP to
+              the charities you select. Simply verify BAYC ownership, pick your
+              charity allocations, and await your airdrop. In the meantime, join
+              us in{" "}
+              <a
+                className="font-normal cursor-pointer"
+                href="https://discord.gg/RN4VGqPDwX"
+                target="_blank"
+              >
+                Discord
+              </a>{" "}
+              and follow us on{" "}
+              <a
+                className="font-normal cursor-pointer"
+                href="https://twitter.com/popcorn_DAO"
+                target="_blank"
+              >
+                Twitter
+              </a>
+            </p>
+            <div className="w-full flex flex-col justify-center">
+              <MetamaskStep
+                isActive={step === Step.Wallet}
+                setStep={setStep}
+                availableSlots={availableSlots}
+                maxSlots={MAX_SLOTS}
+                activate={activate}
+              />
+              <EndStep isActive={step === Step.End} />
+              <BeneficiaryStepTop
+                isActive={step === Step.Beneficiary}
+                maxVotes={MAX_VOTES}
+                availableVotes={availableVotes}
+              />
+            </div>
+          </div>
+          {/* <img
+            src="/images/mobileBg.svg"
             alt="bgError"
             className="absolute bottom-0 -z-10 w-full"
-          />
+          /> */}
         </div>
+        {chainId === 1 && (
+          <BeneficiaryStepBottom
+            isActive={step === Step.Beneficiary}
+            maxVotes={MAX_VOTES}
+            availableVotes={availableVotes}
+            setAvailableVotes={setAvailableVotes}
+            account={account}
+            registeredContacts={registeredContacts}
+            submitVotes={addApe}
+          />
+        )}
       </div>
     </>
   );

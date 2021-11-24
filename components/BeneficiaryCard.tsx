@@ -26,12 +26,12 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
   beneficiaryIndex,
 }) => {
   return (
-    <div className="w-full rounded-3xl shadow-lg border border-gray-200 ml-8 mt-8 pb-8 relative z-20 bg-white">
+    <div className="w-full rounded-3xl shadow-lg border border-gray-200 base:mx-8 pb-8 relative z-20 bg-white">
       <div className="flex-shrink-0">
         <div className="px-10 pb-12 mt-8">
           <div className="flex flex-row items-top justify-between h-32">
             <a
-              className="text-6xl cursor-pointer w-2/3"
+              className="text-4xl base:text-6xl cursor-pointer w-2/3"
               href={beneficiary.url}
               target="_blank"
             >
@@ -39,7 +39,7 @@ const BeneficiaryCard: React.FC<BeneficiaryCardProps> = ({
             </a>
             <p className="text-2xl font-light">0{beneficiaryIndex + 1}/05</p>
           </div>
-          <div className="space-y-5 h-104 mt-12">
+          <div className="space-y-5 h-full base:h-104 mt-12">
             <p className="text-xl font-light tracking-wide">
               <span className="text-xl font-medium mr-1">Impact Area:</span>
               {beneficiary.area}
