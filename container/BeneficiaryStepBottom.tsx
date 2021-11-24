@@ -1,13 +1,13 @@
 import Beneficiary from "components/Beneficiary";
 import router from "next/router";
-import { RegisteredContacts, Step } from "pages";
+import { RegisteredContacts } from "pages";
 import { Dispatch, useState } from "react";
 import beneficiaries from "../public/beneficiaries.json";
 
 interface BeneficiaryStepBottomProps {
   isActive: boolean;
-  availableVotes:number;
-  setAvailableVotes:Dispatch<number>
+  availableVotes: number;
+  setAvailableVotes: Dispatch<number>;
   maxVotes: number;
   account: string;
   registeredContacts: RegisteredContacts;
@@ -49,68 +49,70 @@ export default function BeneficiaryStepBottom({
   return (
     isActive &&
     account && (
-      <div className="w-10/12 mx-auto h-full relative">
-        <div className="w-full mx-auto h-full relative">
-          <div className="w-2/3 mx-auto">
-            <div className="z-10 mx-auto">
-              <Beneficiary
-                beneficiary={beneficiaries[beneficiaryIndex]}
-                setVotes={updateVotes}
-                maxVotes={maxVotes}
-                assignedVotes={votes[beneficiaryIndex]}
-                beneficiaryIndex={beneficiaryIndex}
-                setBeneficiaryIndex={setBeneficiaryIndex}
-              />
-              <div className="mt-44 pl-4 ml-60 pb-24 relative z-20">
-                <div className="relative z-20 mx-auto mt-5 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
-                  <input
-                    type="email"
-                    name="email"
-                    className="w-10/12 p-2 border-none text-base mx-2 text-gray-900"
-                    placeholder="Email"
-                    required
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value.toLowerCase());
-                      setEmailError(
-                        !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-                          e.target.value.toLowerCase()
-                        )
-                      );
-                    }}
-                  />
-                  <div className="clear">
+      <div className="relative z-0 w-full h-full bg-no-repeat bg-center bg-contain bg-beneficiary-pattern">
+        <div className="w-10/12 mx-auto h-full relative">
+          <div className="w-full mx-auto h-full relative">
+            <div className="w-full lg:w-2/3 mx-auto">
+              <div className="z-10 mx-auto">
+                <Beneficiary
+                  beneficiary={beneficiaries[beneficiaryIndex]}
+                  setVotes={updateVotes}
+                  maxVotes={maxVotes}
+                  assignedVotes={votes[beneficiaryIndex]}
+                  beneficiaryIndex={beneficiaryIndex}
+                  setBeneficiaryIndex={setBeneficiaryIndex}
+                />
+                <div className="mt-28 pl-4 ml-24 pb-24 relative z-20">
+                  <div className="relative z-20 mx-auto mt-5 shadow-lg border border-gray-100 bg-white rounded-xl py-2 px-2 w-10/12 2xl:w-8/12 flex flex-row items-center justify-between">
                     <input
-                      type="submit"
-                      value="Register"
-                      name="submit"
-                      className="font-medium text-base bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2 cursor-pointer disabled:bg-gray-500"
-                      disabled={emailError || availableVotes > 0 || !account}
-                      onClick={() => {
-                        if (email.length > 0 && !emailError) {
-                          if (registeredContacts.emails.includes(email)) {
-                            router.push("/alreadyRegistered");
-                          } else {
-                            submitVotes(account, email, votes);
-                          }
-                        } else {
-                          setEmailError(true);
-                        }
+                      type="email"
+                      name="email"
+                      className="w-10/12 p-2 border-none text-base mx-2 text-gray-900"
+                      placeholder="Email"
+                      required
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value.toLowerCase());
+                        setEmailError(
+                          !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                            e.target.value.toLowerCase()
+                          )
+                        );
                       }}
                     />
+                    <div className="clear">
+                      <input
+                        type="submit"
+                        value="Submit"
+                        name="submit"
+                        className="font-medium text-base bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2 cursor-pointer disabled:bg-gray-500"
+                        disabled={emailError || availableVotes > 0 || !account}
+                        onClick={() => {
+                          if (email.length > 0 && !emailError) {
+                            if (registeredContacts.emails.includes(email)) {
+                              router.push("/alreadyRegistered");
+                            } else {
+                              submitVotes(account, email, votes);
+                            }
+                          } else {
+                            setEmailError(true);
+                          }
+                        }}
+                      />
+                    </div>
                   </div>
+                  {emailError && (
+                    <p className="text-red-500 w-10/12 2xl:w-8/12 mx-auto mt-2">
+                      Please enter a valid email address
+                    </p>
+                  )}
                 </div>
-                {emailError && (
-                  <p className="text-red-500 w-10/12 2xl:w-8/12 mx-auto mt-2">
-                    Please enter a valid email address
-                  </p>
-                )}
               </div>
-            </div>
-            <img
-              src="/images/beneficiaryBG.svg"
-              className="absolute top-12 left-10 z-0 w-11/12 2xl:w-8/12 2xl:left-28"
+              <img
+              src="/images/Vector 14.svg"
+              className="absolute z-0 base:top-18 lg:top-14"
             />
+            </div>
           </div>
         </div>
       </div>

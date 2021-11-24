@@ -12,7 +12,7 @@ export default function BeneficiaryStepTop({
   return (
     isActive && (
       <>
-        <div className="flex flex-row items-center mx-auto mt-6 xl:mt-10 2xl:mt-14">
+        <div className="h-full flex flex-row items-center mx-auto mt-6 xl:mt-10 2xl:mt-14">
           <div className="rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 border-gray-800 flex justify-center items-center">
             <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold">1</p>
           </div>
@@ -36,6 +36,7 @@ export default function BeneficiaryStepTop({
             {availableVotes} POP
           </h1>
         </div>
+        <div className="w-2 h-14"></div>
       </>
     )
   );
