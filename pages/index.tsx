@@ -12,6 +12,7 @@ import { store } from "context/store";
 import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
+import checkApe from "utils/checkApe";
 
 export enum Step {
   Wallet,
@@ -90,9 +91,9 @@ export default function Index(): JSX.Element {
     if (registeredContacts.addresses.includes(account)) {
       router.push("/alreadyRegistered");
     } else {
-      // checkApe(contracts.bayc, account).then(
-      //   (hasApe) => !hasApe && router.push("/noApe")
-      // );
+      checkApe(contracts.bayc, account).then(
+        (hasApe) => !hasApe && router.push("/noApe")
+      );
       setEthAddress(account);
     }
   }, [account]);
