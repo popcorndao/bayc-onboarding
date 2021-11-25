@@ -12,7 +12,7 @@ import { store } from "context/store";
 import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
-import {BrowserView, MobileView} from 'react-device-detect';
+import { BrowserView, MobileView} from 'react-device-detect';
 import AutoScale from 'react-auto-scale';
 
 export enum Step {
