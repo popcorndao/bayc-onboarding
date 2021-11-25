@@ -85,6 +85,12 @@ export default function Index(): JSX.Element {
   }, []);
 
   useEffect(() => {
+    if (error) {
+      router.push("/error")
+    }
+  }, [error]);
+
+  useEffect(() => {
     if (!account || !contracts) {
       return;
     }
