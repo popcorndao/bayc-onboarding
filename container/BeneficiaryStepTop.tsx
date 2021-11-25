@@ -18,16 +18,14 @@ export default function BeneficiaryStepTop({
           </div>
           <img src={`/images/arrowBlack.svg`} className="mx-2" />
           <div
-            className={`rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 flex justify-center items-center border-black`}
-          >
+            className={`rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 flex justify-center items-center border-black`}>
             <p
-              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-black`}
-            >
+              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-black`}>
               2
             </p>
           </div>
         </div>
-        <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold mx-auto text-center w-1/3 mt-8 2xl:mt-12">
+        <p className="step-text text-lg xl:text-xl 2xl:text-2xl font-semibold mx-auto text-center mt-8 2xl:mt-12">
           Step 2: You can now allocate {maxVotes} token between the
           organizations below to claim your POP.
         </p>

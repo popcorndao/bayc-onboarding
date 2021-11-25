@@ -146,9 +146,7 @@ export default function Index(): JSX.Element {
 
   return (
     <>
-      <BrowserView>
         <div className={"home"}>
-          <AutoScale>
             <div className={"home-container"}>
               <Navbar />
               <div className={"home-content"}>
@@ -168,8 +166,7 @@ export default function Index(): JSX.Element {
                     href="https://discord.gg/RN4VGqPDwX"
                     target="_blank">
                     {" "} Discord
-                  </a>{" "}
-                  and follow us on{" "}
+                  </a>{" "} and follow us on{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
@@ -191,8 +188,8 @@ export default function Index(): JSX.Element {
               maxVotes={MAX_VOTES}
               availableVotes={availableVotes}/>
           </div>
-        </AutoScale>
       </div>
+      
       <BeneficiaryStepBottom
           isActive={step === Step.Beneficiary}
           maxVotes={MAX_VOTES}
@@ -201,20 +198,18 @@ export default function Index(): JSX.Element {
           account={account}
           registeredContacts={registeredContacts}
           submitVotes={addApe}/>
-      </BrowserView>
-
-      <MobileView>
-      <div className={"mobile-container"}>
-      <div className={"mobile-background-image"}>
-        <div className={"mobile-content"}>
-          <Navbar />
-          <div>
-            <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
-              This site is not available on mobile.
-            </h1>
-          </div>
-          <div>
-            <p className="mt-4 text-xl font-light z-20">
+      
+        <div className={"mobile-container"}>
+          <div className={"mobile-background-image"}>
+            <div className={"mobile-content"}>
+              <Navbar />  
+            <div>
+              <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
+                This site is not available on mobile.
+              </h1>
+            </div>
+            <div>
+              <p className="mt-4 text-xl font-light z-20">
                   Follow our
                   <a
                     className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
@@ -230,12 +225,11 @@ export default function Index(): JSX.Element {
                     Twitter
                   </a>{" "}
                   for the next drop!
-            </p>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-      </MobileView>
     </>
   );
 }

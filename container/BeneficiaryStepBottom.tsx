@@ -49,7 +49,7 @@ export default function BeneficiaryStepBottom({
   return (
     isActive &&
     account && (
-      <div className="w-10/12 mx-auto h-full relative">
+      <div className="w-10/12 h-full relative">
         <div className="w-full mx-auto h-full relative">
           <div className="w-2/3 mx-auto">
             <div className="z-10 mx-auto">
@@ -62,12 +62,6 @@ export default function BeneficiaryStepBottom({
                 setBeneficiaryIndex={setBeneficiaryIndex}
               />
             </div>
-
-            {emailError && (
-                  <p className="text-red-500 w-10/12 2xl:w-8/12 mx-auto mt-2">
-                    Please enter a valid email address
-                  </p>
-            )}
 
             <div className={"email-input"}>
               <input
@@ -105,6 +99,13 @@ export default function BeneficiaryStepBottom({
                 </div>
             </div>
             
+            <>
+            {emailError && (
+                  <p className="text-red-500 w-10/12 2xl:w-8/12 mx-auto mt-2">
+                    Please enter a valid email address
+                  </p>
+            )}
+            </>
           </div>
         </div>
       </div>
