@@ -12,8 +12,7 @@ import { store } from "context/store";
 import { ContractContext } from "context/Web3/contracts";
 import router from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { BrowserView, MobileView} from 'react-device-detect';
-import AutoScale from 'react-auto-scale';
+import checkApe from "utils/checkApe";
 
 export enum Step {
   Wallet,
@@ -86,17 +85,23 @@ export default function Index(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    if (!account || !contracts) {
+    if (error) {
+      router.push("/error")
+    }
+  }, [error]);
+
+  useEffect(() => {
+    /*if (!account || !contracts) {
       return;
     }
     if (registeredContacts.addresses.includes(account)) {
       router.push("/alreadyRegistered");
     } else {
-      // checkApe(contracts.bayc, account).then(
-      //   (hasApe) => !hasApe && router.push("/noApe")
-      // );
+      checkApe(contracts.bayc, account).then(
+        (hasApe) => !hasApe && router.push("/noApe")
+      );
       setEthAddress(account);
-    }
+    }*/
   }, [account]);
 
   async function addApe(
@@ -146,21 +151,27 @@ export default function Index(): JSX.Element {
 
   return (
     <>
-        <div className={"home"}>
-            <div className={"home-container"}>
-              <Navbar />
-              <div className={"home-content"}>
-                <img
-                  src="/images/hero.png"
-                  alt="hero"
-                  className={"hero-image"}/>
-
-                <p className={"home-text"}>
-                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}
-                  $POP to the charities you select. Your airdropped tokens are
-                  locked until $POP staking in 2022. Simply verify BAYC
+      <div
+        className={`base:block w-full h-screen bg-white overflow-x-hidden`}
+      >
+        <div
+          className="relative z-20 overflow-visible h-full min-h-screen w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
+          style={{ height: "121%" }}
+        >
+          <div className="pt-10 2xl:pt-12">
+            <Navbar />
+            <div className="flex flex-col w-full mt-12 xl:mt-24">
+              <img
+                src="/images/hero.png"
+                alt="hero"
+                className="w-1/3 mx-auto" 
+              />
+              <div className="flex flex-col">
+                <p className="w-2/3 xl:w-1/3 md:w-1/3 text-sm xl:text-xl mt-12 2xl:mt-16 mx-auto text-gray-900 font-light text-center">
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
+                  $POP to the charities you select. Simply verify BAYC
                   ownership, pick your charity allocations, and await your
-                  airdrop. In meantime, join us on  
+                  airdrop. In the meantime, join us in{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
@@ -188,47 +199,85 @@ export default function Index(): JSX.Element {
               maxVotes={MAX_VOTES}
               availableVotes={availableVotes}/>
           </div>
+        </div>
+        {chainId === 1 && (
+          <BeneficiaryStepBottom
+            isActive={step === Step.Beneficiary}
+            maxVotes={MAX_VOTES}
+            availableVotes={availableVotes}
+            setAvailableVotes={setAvailableVotes}
+            account={account}
+            registeredContacts={registeredContacts}
+            submitVotes={addApe}
+          />
+        )}
       </div>
-      
-      <BeneficiaryStepBottom
-          isActive={step === Step.Beneficiary}
-          maxVotes={MAX_VOTES}
-          availableVotes={availableVotes}
-          setAvailableVotes={setAvailableVotes}
-          account={account}
-          registeredContacts={registeredContacts}
-          submitVotes={addApe}/>
-      
-        <div className={"mobile-container"}>
-          <div className={"mobile-background-image"}>
-            <div className={"mobile-content"}>
-              <Navbar />  
-            <div>
-              <h1 className="text-2xl font-medium w-10/12 text-center mx-auto">
-                This site is not available on mobile.
-              </h1>
-            </div>
-            <div>
-              <p className="mt-4 text-xl font-light z-20">
-                  Follow our
+      <div
+        className={`hidden w-full h-screen bg-white overflow-x-hidden`}
+      >
+        <div
+          className="relative h-full min-h-screen w-screen bg-center bg-contain bg-no-repeat bg-hero-pattern"
+          style={{ height: "111%" }}
+        >
+          <div className="">
+            <Navbar />
+            <div className="flex flex-col w-full">
+              <div className="h-full bg-primary pt-12">
+                <img
+                  src="/images/hero.png"
+                  alt="hero"
+                  className="w-1/3 mx-auto"
+                />
+              </div>
+              <div className="flex flex-col">
+                <p className="text-lg xl:text-xl 2xl:text-3xl base:w-6/12 lg:w-1/3 pt-12 mx-auto text-gray-900 font-light text-center bg-primary">
+                  This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
+                  $POP to the charities you select. Simply verify BAYC
+                  ownership, pick your charity allocations, and await your
+                  airdrop. In the meantime, join us in{" "}
                   <a
-                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
                     target="_blank">
                     Discord
                   </a>{" "}
-                  and
+                  and follow us on{" "}
                   <a
-                    className="font-normal text-xl cursor-pointer z-20 mt-8 mx-2"
+                    className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
                     target="_blank">
                     Twitter
-                  </a>{" "}
-                  for the next drop!
-              </p>
+                  </a>
+                </p>
+                <MetamaskStep
+                  isActive={step === Step.Wallet}
+                  setStep={setStep}
+                  availableSlots={availableSlots}
+                  maxSlots={MAX_SLOTS}
+                  activate={activate}
+                />
+                <EndStep isActive={step === Step.End} />
+                <BeneficiaryStepTop
+                  isActive={step === Step.Beneficiary}
+                  maxVotes={MAX_VOTES}
+                  availableVotes={availableVotes}
+                />
+              </div>
             </div>
           </div>
         </div>
+        {chainId === 1 && (
+          <BeneficiaryStepBottom
+            isActive={step === Step.Beneficiary}
+            maxVotes={MAX_VOTES}
+            availableVotes={availableVotes}
+            setAvailableVotes={setAvailableVotes}
+            account={account}
+            registeredContacts={registeredContacts}
+            submitVotes={addApe}
+          />
+        )}
+      </div>
       </div>
     </>
   );

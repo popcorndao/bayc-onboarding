@@ -1,4 +1,4 @@
-import * as Icon from "react-feather";
+  import * as Icon from "react-feather";
 import BeneficiaryCard from "./BeneficiaryCard";
 import { BeneficiaryImage } from "./CardBody";
 
@@ -29,42 +29,52 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
   setBeneficiaryIndex,
 }) => {
   return (
-    <div className={"beneficiary"}>
-      <div className={"beneficiary-column"}>
-        <img
-            className={"beneficiary-image"}
-            src={`/images/${beneficiary.image.image}`}
-            alt={beneficiary.image.description}
-          />
-          <div className={"beneficiary-row"}>
-            <button
-                className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
-                onClick={() =>
-                  setBeneficiaryIndex(
-                    beneficiaryIndex === 0 ? 4 : beneficiaryIndex - 1
-                  )
-                }>
-              <Icon.ChevronLeft className="text-white h-18 w-18 mr-2" />
-            </button>
-            <button
-                className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
-                onClick={() =>
-                  setBeneficiaryIndex(
-                    beneficiaryIndex === 4 ? 0 : beneficiaryIndex + 1
-                  )
-                }
-              >
-              <Icon.ChevronRight className="text-white h-18 w-18 ml-2" />
-            </button>
+    <>
+      <div className="hidden base:block w-full relative z-20 pt-40">
+        <div className="flex flex-row flex-nowrap justify-center mx-auto w-full 2xl:w-8/12">
+          <div className="w-1/3 mr-4">
+            <img
+              className="w-full h-104 object-cover rounded-3xl"
+              src={`/images/${beneficiary.image.image}`}
+              alt={beneficiary.image.description}
+            />
+            <div className="flex flex-row justify-end w-full mt-8">
+              <div className="flex flex-row items-center justify-end w-10/12 xl:w-3/4">
+                <button
+                  className="w-24 h-24 mr-8 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
+                  onClick={() =>
+                    setBeneficiaryIndex(
+                      beneficiaryIndex === 0 ? 4 : beneficiaryIndex - 1
+                    )
+                  }
+                >
+                  <Icon.ChevronLeft className="text-white h-18 w-18 mr-2" />
+                </button>
+                <button
+                  className="w-24 h-24 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
+                  onClick={() =>
+                    setBeneficiaryIndex(
+                      beneficiaryIndex === 4 ? 0 : beneficiaryIndex + 1
+                    )
+                  }
+                >
+                  <Icon.ChevronRight className="text-white h-18 w-18 ml-2" />
+                </button>
+              </div>
+            </div>
           </div>
+          <div className="w-2/3">
+            <BeneficiaryCard
+              beneficiary={beneficiary}
+              setVotes={setVotes}
+              maxVotes={maxVotes}
+              assignedVotes={assignedVotes}
+              beneficiaryIndex={beneficiaryIndex}
+            />
+          </div>
+        </div>
       </div>
-      <BeneficiaryCard
-        beneficiary={beneficiary}
-        setVotes={setVotes}
-        maxVotes={maxVotes}
-        assignedVotes={assignedVotes}
-        beneficiaryIndex={beneficiaryIndex}/>
-    </div>
+    </>
   );
 };
 export default Beneficiary;

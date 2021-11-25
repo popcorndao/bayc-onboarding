@@ -24,7 +24,7 @@ const VoteSlider: React.FC<VoteSliderProps> = ({
   const sliderMarks = {};
   sliderSteps.forEach(function (step) {
     sliderMarks[step[0]] = {
-      style: { color: "#FA6456", marginTop:"2px"},
+      style: { color: "#FA6456", marginTop: "2px" },
       label: step[1],
     };
   });
@@ -32,7 +32,9 @@ const VoteSlider: React.FC<VoteSliderProps> = ({
   return (
     <>
       <span className="w-full flex flex-row items-center justify-between mb-6">
-        <p className="text-xl font-medium">Allocate your token</p>
+        <p className="text-xl font-medium">
+          Allocate tokens to this organization
+        </p>
         <p className="text-xl font-medium">{assignedVotes}</p>
       </span>
       <div className="w-full pb-3 px-2">
@@ -44,24 +46,36 @@ const VoteSlider: React.FC<VoteSliderProps> = ({
           max={maxVotes}
           step={10}
           marks={sliderMarks}
-          handleStyle={{ borderColor: "#FA6456", width:"20px", height:"20px"}}
+          handleStyle={{
+            borderColor: "#FA6456",
+            width: "20px",
+            height: "20px",
+          }}
           dotStyle={{
-            width:"20px",
-            height:"20px",
+            width: "20px",
+            height: "20px",
             backgroundColor: "#EFD1CE",
             border: "3px solid #FFFFFF",
-            marginBottom:"-8px",
-            marginLeft:"-12px"
+            marginBottom: "-8px",
+            marginLeft: "-12px",
           }}
           activeDotStyle={{
-            width:"20px",
-            height:"20px",
+            width: "20px",
+            height: "20px",
             backgroundColor: "#FA6456",
             border: "3px solid #FFFFFF",
-            marginBottom:"-9px"
+            marginBottom: "-9px",
           }}
-          railStyle={{ backgroundColor: "#EFD1CE", height: "4px", marginTop:"3px" }}
-          trackStyle={{ backgroundColor: "#FA6456", height: "4px", marginTop:"3px" }}
+          railStyle={{
+            backgroundColor: "#EFD1CE",
+            height: "4px",
+            marginTop: "3px",
+          }}
+          trackStyle={{
+            backgroundColor: "#FA6456",
+            height: "4px",
+            marginTop: "3px",
+          }}
         />
       </div>
     </>

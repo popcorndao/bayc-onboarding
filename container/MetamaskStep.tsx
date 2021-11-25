@@ -22,23 +22,23 @@ export default function MetamaskStep({
   return (
     isActive && (
       <>
-        <div className="flex flex-row items-center mx-auto mt-6 xl:mt-10 2xl:mt-14">
+        <div className="flex flex-row items-center mx-auto mt-4 md:mt-8 xl:mt-10 2xl:mt-14">
           <div className="rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 border-gray-800 flex justify-center items-center">
             <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold">1</p>
           </div>
           <img src={`/images/arrowGray.svg`} className="mx-2" />
           <div
             className={`rounded-full w-8 xl:w-12 2xl:w-16 h-8 xl:h-12 2xl:h-16 border-2 flex justify-center items-center
-            border-gray-500`}
+            border-gray-400`}
           >
             <p
-              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-gray-500`}
+              className={`text-lg xl:text-xl 2xl:text-2xl font-semibold text-gray-400`}
             >
               2
             </p>
           </div>
         </div>
-        <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold mx-auto text-center xl:w-1/3 mt-8 2xl:mt-12">
+        <p className="text-lg xl:text-xl 2xl:text-2xl font-semibold mx-auto text-center xl:w-1/3 mt-4 md:mt-8 2xl:mt-12">
           Step 1: Connect with Metamask
         </p>
         <button
@@ -52,7 +52,7 @@ export default function MetamaskStep({
             Connect Wallet
           </p>
         </button>
-        <p className="text-xl xl:text-3xl 2xl:text-4xl font-semibold text-center">
+        <p className="text-xl xl:text-3xl 2xl:text-4xl font-semibold text-center mt-4 md:mt-8 pb-4 sm:pb-8">
           {availableSlots}/{maxSlots} Left
         </p>
       </>
