@@ -277,7 +277,7 @@ export default function Index(): JSX.Element {
             submitVotes={addApe}
           />
         )}
-      </div>
+        </div>
       </div>
     </>
   );

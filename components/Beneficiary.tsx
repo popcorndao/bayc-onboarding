@@ -73,6 +73,28 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
             />
           </div>
         </div>
+        <div className="flex flex-row items-center justify-between w-8/12 mt-8 mx-auto">
+          <button
+            className="w-18 h-18 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
+            onClick={() =>
+              setBeneficiaryIndex(
+                beneficiaryIndex === 0 ? 4 : beneficiaryIndex - 1
+              )
+            }
+          >
+            <Icon.ChevronLeft className="text-white h-12 w-12 mr-2" />
+          </button>
+          <button
+            className="w-18 h-18 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
+            onClick={() =>
+              setBeneficiaryIndex(
+                beneficiaryIndex === 4 ? 0 : beneficiaryIndex + 1
+              )
+            }
+          >
+            <Icon.ChevronRight className="text-white h-12 w-12 ml-2" />
+          </button>
+        </div>
       </div>
     </>
   );
