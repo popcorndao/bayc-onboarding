@@ -42,7 +42,7 @@ export default function MetamaskStep({
           Step 1: Connect with Metamask
         </p>
         <button
-          className="w-48 2xl:w-60 py-2 xl:py-4 px-5 mt-5 2xl:mt-6 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-600 hover:bg-blue-700"
+          className="w-48 2xl:w-60 py-2 xl:py-4 px-5 mt-5 2xl:mt-6 flex flex-row items-center justify-center rounded-xl mx-auto bg-blue-600 hover:bg-blue-700 mt-8 mb-8" 
           onClick={() => {
             activate(connectors.Injected);
             setStep(Step.Beneficiary);

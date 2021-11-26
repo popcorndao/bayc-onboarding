@@ -1,4 +1,4 @@
-import * as Icon from "react-feather";
+  import * as Icon from "react-feather";
 import BeneficiaryCard from "./BeneficiaryCard";
 import { BeneficiaryImage } from "./CardBody";
 
@@ -30,16 +30,16 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
 }) => {
   return (
     <>
-      <div className="hidden base:block w-full relative z-20 pt-40">
-        <div className="flex flex-row justify-between mx-auto w-full 2xl:w-8/12">
-          <div className="w-1/3 mr-4">
+      <div className="w-full relative z-20 pt-40">
+        <div className="flex flex-row flex-wrap  justify-center items-start mx-auto w-full 2xl:w-8/12">
+          <div className="">
             <img
               className="w-full h-104 object-cover rounded-3xl"
               src={`/images/${beneficiary.image.image}`}
               alt={beneficiary.image.description}
             />
             <div className="flex flex-row justify-end w-full mt-8">
-              <div className="flex flex-row items-center justify-end w-10/12 xl:w-3/4">
+              <div className="hidden sm:hidden md:flex lg:flex lg:flex-row md:flex-row sm:flex-column flex-nowrap items-center justify-end mb-8 mt-8">
                 <button
                   className="w-24 h-24 mr-8 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
                   onClick={() =>
@@ -73,23 +73,7 @@ const Beneficiary: React.FC<BeneficiaryProps> = ({
             />
           </div>
         </div>
-      </div>
-      <div className="base:hidden">
-        <img
-          className="w-11/12 mx-auto h-80 object-cover object-center rounded-3xl border border-gray-100 shadow-lg"
-          src={`/images/${beneficiary.image.image}`}
-          alt={beneficiary.image.description}
-        />
-        <div className="w-11/12 mx-auto mt-8">
-          <BeneficiaryCard
-            beneficiary={beneficiary}
-            setVotes={setVotes}
-            maxVotes={maxVotes}
-            assignedVotes={assignedVotes}
-            beneficiaryIndex={beneficiaryIndex}
-          />
-        </div>
-        <div className="flex flex-row items-center justify-between w-8/12 mt-8 mx-auto">
+        <div className="md:hidden flex flex-row items-center justify-between w-8/12 mt-8 mx-auto">
           <button
             className="w-18 h-18 rounded-full bg-red-500 flex justify-center items-center flex-shrink-0 flex-grow-0 hover:bg-red-600"
             onClick={() =>

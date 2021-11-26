@@ -91,7 +91,7 @@ export default function Index(): JSX.Element {
   }, [error]);
 
   useEffect(() => {
-    if (!account || !contracts) {
+    /*if (!account || !contracts) {
       return;
     }
     if (registeredContacts.addresses.includes(account)) {
@@ -101,7 +101,7 @@ export default function Index(): JSX.Element {
         (hasApe) => !hasApe && router.push("/noApe")
       );
       setEthAddress(account);
-    }
+    }*/
   }, [account]);
 
   async function addApe(
@@ -152,11 +152,11 @@ export default function Index(): JSX.Element {
   return (
     <>
       <div
-        className={`hidden base:block w-full h-screen bg-white overflow-x-hidden`}
+        className={`base:block w-full h-screen bg-white overflow-x-hidden`}
       >
         <div
           className="relative z-20 overflow-visible h-full min-h-screen w-screen bg-center bg-cover bg-no-repeat bg-hero-pattern"
-          style={{ height: "111%" }}
+          style={{ height: "121%" }}
         >
           <div className="pt-10 2xl:pt-12">
             <Navbar />
@@ -164,10 +164,10 @@ export default function Index(): JSX.Element {
               <img
                 src="/images/hero.png"
                 alt="hero"
-                className="w-1/3 mx-auto"
+                className="w-1/3 mx-auto" 
               />
               <div className="flex flex-col">
-                <p className="text-lg xl:text-xl 2xl:text-3xl mt-12 2xl:mt-16 base:w-6/12 lg:w-1/3 mx-auto text-gray-900 font-light text-center">
+                <p className="w-2/3 xl:w-1/3 md:w-1/3 text-sm xl:text-xl mt-12 2xl:mt-16 mx-auto text-gray-900 font-light text-center">
                   This airdrop sends 100 $POP to your wallet and {MAX_VOTES}{" "}
                   $POP to the charities you select. Simply verify BAYC
                   ownership, pick your charity allocations, and await your
@@ -175,34 +175,29 @@ export default function Index(): JSX.Element {
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
-                    target="_blank"
-                  >
-                    Discord
-                  </a>{" "}
-                  and follow us on{" "}
+                    target="_blank">
+                    {" "} Discord
+                  </a>{" "} and follow us on{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Twitter
                   </a>
                 </p>
-                <MetamaskStep
-                  isActive={step === Step.Wallet}
-                  setStep={setStep}
-                  availableSlots={availableSlots}
-                  maxSlots={MAX_SLOTS}
-                  activate={activate}
-                />
-                <EndStep isActive={step === Step.End} />
-                <BeneficiaryStepTop
-                  isActive={step === Step.Beneficiary}
-                  maxVotes={MAX_VOTES}
-                  availableVotes={availableVotes}
-                />
-              </div>
             </div>
+
+            <MetamaskStep
+              isActive={step === Step.Wallet}
+              setStep={setStep}
+              availableSlots={availableSlots}
+              maxSlots={MAX_SLOTS}
+              activate={activate}/>
+            <EndStep isActive={step === Step.End} />
+            <BeneficiaryStepTop
+              isActive={step === Step.Beneficiary}
+              maxVotes={MAX_VOTES}
+              availableVotes={availableVotes}/>
           </div>
         </div>
         {chainId === 1 && (
@@ -243,16 +238,14 @@ export default function Index(): JSX.Element {
                   <a
                     className="font-normal cursor-pointer"
                     href="https://discord.gg/RN4VGqPDwX"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Discord
                   </a>{" "}
                   and follow us on{" "}
                   <a
                     className="font-normal cursor-pointer"
                     href="https://twitter.com/popcorn_DAO"
-                    target="_blank"
-                  >
+                    target="_blank">
                     Twitter
                   </a>
                 </p>
@@ -284,68 +277,7 @@ export default function Index(): JSX.Element {
             submitVotes={addApe}
           />
         )}
-      </div>
-      <div className="base:hidden">
-        <div className="w-full h-full bg-white overflow-x-hidden bg-mobile-pattern bg-cover bg-bottom bg-no-repeat mb-8 sm:mb-16">
-          <div className="mt-4 w-11/12 mx-auto">
-            <Navbar />
-          </div>
-          <div className="relative z-10">
-            <img src="/images/illustration.png" className="mt-4 w-full" />
-            <p className="w-11/12 md:w-9/12 text-base md:text-xl md:mt-8 mx-auto text-gray-900 font-light text-center">
-              This airdrop sends 100 $POP to your wallet and {MAX_VOTES} $POP to
-              the charities you select. Simply verify BAYC ownership, pick your
-              charity allocations, and await your airdrop. In the meantime, join
-              us in{" "}
-              <a
-                className="font-normal cursor-pointer"
-                href="https://discord.gg/RN4VGqPDwX"
-                target="_blank"
-              >
-                Discord
-              </a>{" "}
-              and follow us on{" "}
-              <a
-                className="font-normal cursor-pointer"
-                href="https://twitter.com/popcorn_DAO"
-                target="_blank"
-              >
-                Twitter
-              </a>
-            </p>
-            <div className="w-full flex flex-col justify-center">
-              <MetamaskStep
-                isActive={step === Step.Wallet}
-                setStep={setStep}
-                availableSlots={availableSlots}
-                maxSlots={MAX_SLOTS}
-                activate={activate}
-              />
-              <EndStep isActive={step === Step.End} />
-              <BeneficiaryStepTop
-                isActive={step === Step.Beneficiary}
-                maxVotes={MAX_VOTES}
-                availableVotes={availableVotes}
-              />
-            </div>
-          </div>
-          {/* <img
-            src="/images/mobileBg.svg"
-            alt="bgError"
-            className="absolute bottom-0 -z-10 w-full"
-          /> */}
         </div>
-        {chainId === 1 && (
-          <BeneficiaryStepBottom
-            isActive={step === Step.Beneficiary}
-            maxVotes={MAX_VOTES}
-            availableVotes={availableVotes}
-            setAvailableVotes={setAvailableVotes}
-            account={account}
-            registeredContacts={registeredContacts}
-            submitVotes={addApe}
-          />
-        )}
       </div>
     </>
   );
